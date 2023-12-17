@@ -1,0 +1,17 @@
+[user]
+	name = Cyrus Duong
+	email = cyrusduong@gmail.com
+[core]
+	editor = nvim
+[alias]
+	count-lines = "! git log --author=\"$1\" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf \"added lines: %s, removed lines: %s, total lines: %s\\n\", add, subs, loc }' #"
+	tree = ! git log --all --decorate --oneline --graph
+[credential "https://github.caesars.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
