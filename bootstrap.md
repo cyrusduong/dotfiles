@@ -45,6 +45,17 @@ secret-tool store --label='spotifyd' application rust-keyring service spotifyd u
 
 After this is done spotifyd should be started on next login or with `systemctl --user start spotifyd.service`
 
+> If that does not work as expected check the journal for errors about the service unit.
+
+### gspt
+
+gspt is a spotify tui that includes album and icons.
+
+To configure it we have to ensure a spotify application is setup for our account. Follow the instructions
+[here.](https://github.com/aditya-K2/gspt#afer-installation-steps)
+
+To not expose our client secrets we'll add this to our `.secrets.sh` file that is loaded in `.zshrc` but not committed to yadm.
+
 ### lazyvim
 
 LazyVim gets installed in bootstrap but everything may not be working as expected on the first few loads.
