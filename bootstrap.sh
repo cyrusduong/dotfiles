@@ -1,10 +1,10 @@
 #!/usr/bin/bash
 
 # Add packages wanted in bootstrap
-ESSENTIALS=("base-devel btrfs-progs exfatprogs e2fsprogs pacman-contrib xorg-xinit lightdm i3-wm man-db man-pages inetutils")
-PACKAGES=("git man-db pipewire ripgrep neovim firefox chromium rofi dunst rustup rsync delta meld rclone aws-cli transmission-cli transmission-qt wezterm")
+ESSENTIALS=("base-devel btrfs-progs exfatprogs e2fsprogs pacman-contrib xorg-xinit lightdm i3-wm man-db man-pages inetutils amd-ucode fd unzip xorg-xkill xclip")
+PACKAGES=("git man-db pipewire ripgrep neovim firefox chromium rofi dunst rustup rsync meld rclone aws-cli transmission-cli transmission-qt wezterm")
 PARU=("remmina feh krita gimp rawtherapee nemo xcolor spotify-qt xplr fzf lazygit github-cli hub jq gron bottom glances neofetch font-manager dust peco gradle bitwarden-cli bitwarden polybar arandr autorandr yadm discord")
-AUR=("slack-desktop usbimager android-studio i3lock-color lightdm-mini-greeter moar copyq xorg-xkill")
+AUR=("slack-desktop usbimager android-studio i3lock-color lightdm-mini-greeter moar clipboard delta")
 
 # Ask for sudo
 if [ $EUID != 0 ]; then

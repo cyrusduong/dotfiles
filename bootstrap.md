@@ -26,6 +26,16 @@ chmod +x bootstrap.sh
 ./bootstrap.sh
 ```
 
+## Setting up lazyvim
+
+LazyVim gets installed in bootstrap but everything may not be working as expected on the first few loads.
+Open it a few times, sync/update, and then run `:CheckHealth` to opt-in to see what else still needs setup.
+
+## Setting up CopyQ
+
+Open an instance of CopyQ (if not started yet) and go into its preferences.
+Be sure to set the theme and clipboard sync as wanted. It may make sense to have CopyQ pick up on mouse selected text.
+
 ## Using a YADM (yet another dotnet manager)
 
 TODO:
