@@ -26,19 +26,34 @@ chmod +x bootstrap.sh
 ./bootstrap.sh
 ```
 
-## Setting up lazyvim
+## Using a YADM (yet another dotnet manager)
+
+YADM should do a decent job getting the machine to a state that it was from a previous backup.
+We'll still have a few applications that require secrets, passwords, or manual config through their interfaces
+however.
+
+### spotifyd
+
+spotifyd from our setup uses the [GNOME Keyring](https://wiki.archlinux.org/title/GNOME/Keyring) which allows us to securely store our passwords
+simliar to the keychain in MacOS.
+
+> To add such an entry into your keyring, you can use secret-tool, a CLI used to communicate with agents that support the Secret Service API:
+
+```
+secret-tool store --label='spotifyd' application rust-keyring service spotifyd username <spotify-username>
+```
+
+After this is done spotifyd should be started on next login or with `systemctl --user start spotifyd.service`
+
+### lazyvim
 
 LazyVim gets installed in bootstrap but everything may not be working as expected on the first few loads.
 Open it a few times, sync/update, and then run `:CheckHealth` to opt-in to see what else still needs setup.
 
-## Setting up CopyQ
+### CopyQ
 
 Open an instance of CopyQ (if not started yet) and go into its preferences.
 Be sure to set the theme and clipboard sync as wanted. It may make sense to have CopyQ pick up on mouse selected text.
-
-## Using a YADM (yet another dotnet manager)
-
-TODO:
 
 ## Setting a backup
 

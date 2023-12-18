@@ -2,7 +2,7 @@
 
 # Add packages wanted in bootstrap
 ESSENTIALS=("base-devel btrfs-progs exfatprogs e2fsprogs pacman-contrib xorg-xinit i3-wm dunst man-db man-pages inetutils amd-ucode fd unzip xorg-xkill pango xclip")
-ESSENTIALS2=("wget gawk scrot wireplumber xorg-xev git pipewire rsync rclone pipewire-audio pipewire-pulse ripgrep playerctl")
+ESSENTIALS2=("wget gawk scrot wireplumber xorg-xev git pipewire rsync rclone pipewire-audio pipewire-pulse ripgrep playerctl gnome-keyring seahorse")
 EXTRAS=("neovim firefox chromium rofi rustup meld aws-cli transmission-cli transmission-qt wezterm copyq otf-monaspace-nerd helvum bat spotifyd bottom htop")
 EXTRAS2=("remmina feh krita gimp rawtherapee nemo xcolor xplr fzf lazygit github-cli hub jq gron bottom glances neofetch font-manager dust peco gradle")
 EXTRAS3=("bitwarden-cli bitwarden polybar arandr autorandr yadm discord")
