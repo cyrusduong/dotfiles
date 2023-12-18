@@ -1,8 +1,8 @@
 #!/usr/bin/bash
 
 # Add packages wanted in bootstrap
-ESSENTIALS=("base-devel btrfs-progs exfatprogs e2fsprogs pacman-contrib xorg-xinit lightdm i3-wm man-db man-pages inetutils amd-ucode fd unzip xorg-xkill pango xclip wget")
-EXTRAS=("git man-db pipewire ripgrep neovim firefox chromium rofi dunst rustup rsync meld rclone aws-cli transmission-cli transmission-qt wezterm copyq otf-monaspace-nerd")
+ESSENTIALS=("base-devel btrfs-progs exfatprogs e2fsprogs pacman-contrib xorg-xinit lightdm i3-wm man-db man-pages inetutils amd-ucode fd unzip xorg-xkill pango xclip wget gawk scrot wireplumber")
+EXTRAS=("git man-db pipewire ripgrep neovim firefox chromium rofi dunst rustup rsync meld rclone aws-cli transmission-cli transmission-qt wezterm copyq otf-monaspace-nerd helvum pipewire-audio pipewire-pulse")
 PARU=("remmina feh krita gimp rawtherapee nemo xcolor spotify-qt xplr fzf lazygit github-cli hub jq gron bottom glances neofetch font-manager dust peco gradle bitwarden-cli bitwarden polybar arandr autorandr yadm discord")
 AUR=("slack-desktop usbimager android-studio i3lock-color lightdm-mini-greeter moar clipboard delta")
 
@@ -40,7 +40,7 @@ pacman -S --noconfirm --needed $EXTRAS
 
 # Set pacman cache to clean up after itself weekly
 echo "Enabling paccache.timer"
-systemctl enable reflector.timer
+systemctl enable paccache.timer
 
 # Setup rust toolchain
 echo "Setting up rust toolchain to stable for this machine"
@@ -86,3 +86,9 @@ mv /home/$SUDO_USER/.cache/nvim{,.bak}
 sudo -H -u $SUDO_USER bash -c "$(git clone https://github.com/LazyVim/starter /home/$SUDO_USER/.config/nvim)"
 rm -rf /home/$SUDO_USER/.config/nvim/.git
 chown -fR cduong:cduong /home/$SUDO_USER/.config/nvim
+
+# Setup pipewire
+cp -r /usr/share/pipewire/ /home/$SUDO_USER/.config/pipewire
+chown -fR cduong:cduong /home/$SUDO_USER/.config/pipewire
+sudo -H -u $SUDO_USER bash -c "$(systemctl --user enable pipewire-pulse.service)"
+sudo -H -u $SUDO_USER bash -c "$(systemctl --user enable wireplumber.service)"
