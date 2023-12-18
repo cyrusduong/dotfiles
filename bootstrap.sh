@@ -5,7 +5,7 @@ ESSENTIALS=("base-devel btrfs-progs exfatprogs e2fsprogs pacman-contrib xorg-xin
 ESSENTIALS2=("wget gawk scrot wireplumber xorg-xev git pipewire rsync rclone pipewire-audio pipewire-pulse ripgrep playerctl gnome-keyring seahorse")
 EXTRAS=("neovim firefox chromium rofi rustup meld aws-cli transmission-cli transmission-qt wezterm copyq otf-monaspace-nerd helvum bat spotifyd bottom htop")
 EXTRAS2=("remmina feh krita gimp rawtherapee nemo xcolor xplr fzf lazygit github-cli hub jq gron bottom glances neofetch font-manager dust peco gradle")
-EXTRAS3=("bitwarden-cli bitwarden polybar arandr autorandr yadm discord")
+EXTRAS3=("bitwarden-cli bitwarden polybar arandr autorandr yadm discord tealdeer")
 AUR=("slack-desktop usbimager android-studio i3lock-color gspt")
 
 # Ask for sudo
