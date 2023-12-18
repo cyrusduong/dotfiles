@@ -1,8 +1,8 @@
 #!/usr/bin/bash
 
 # Add packages wanted in bootstrap
-ESSENTIALS=("base-devel btrfs-progs exfatprogs e2fsprogs pacman-contrib xorg-xinit lightdm i3-wm man-db man-pages inetutils amd-ucode fd unzip xorg-xkill xclip")
-PACKAGES=("git man-db pipewire ripgrep neovim firefox chromium rofi dunst rustup rsync meld rclone aws-cli transmission-cli transmission-qt wezterm")
+ESSENTIALS=("base-devel btrfs-progs exfatprogs e2fsprogs pacman-contrib xorg-xinit lightdm i3-wm man-db man-pages inetutils amd-ucode fd unzip xorg-xkill pango xclip wget")
+EXTRAS=("git man-db pipewire ripgrep neovim firefox chromium rofi dunst rustup rsync meld rclone aws-cli transmission-cli transmission-qt wezterm copyq otf-monaspace-nerd")
 PARU=("remmina feh krita gimp rawtherapee nemo xcolor spotify-qt xplr fzf lazygit github-cli hub jq gron bottom glances neofetch font-manager dust peco gradle bitwarden-cli bitwarden polybar arandr autorandr yadm discord")
 AUR=("slack-desktop usbimager android-studio i3lock-color lightdm-mini-greeter moar clipboard delta")
 
@@ -36,7 +36,7 @@ sed --in-place 's/#Parallel/Parallel/' /etc/pacman.conf
 
 # Get the essentials
 pacman -Syu --noconfirm --needed $ESSENTIALS
-pacman -S --noconfirm --needed $PACKAGES
+pacman -S --noconfirm --needed $EXTRAS
 
 # Set pacman cache to clean up after itself weekly
 echo "Enabling paccache.timer"
