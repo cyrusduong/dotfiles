@@ -1,10 +1,12 @@
 #!/usr/bin/bash
 
 # Add packages wanted in bootstrap
-ESSENTIALS=("base-devel btrfs-progs exfatprogs e2fsprogs pacman-contrib xorg-xinit lightdm i3-wm man-db man-pages inetutils amd-ucode fd unzip xorg-xkill pango xclip wget gawk scrot wireplumber")
-EXTRAS=("git man-db pipewire ripgrep neovim firefox chromium rofi dunst rustup rsync meld rclone aws-cli transmission-cli transmission-qt wezterm copyq otf-monaspace-nerd helvum pipewire-audio pipewire-pulse")
-PARU=("remmina feh krita gimp rawtherapee nemo xcolor spotify-qt xplr fzf lazygit github-cli hub jq gron bottom glances neofetch font-manager dust peco gradle bitwarden-cli bitwarden polybar arandr autorandr yadm discord")
-AUR=("slack-desktop usbimager android-studio i3lock-color lightdm-mini-greeter moar clipboard delta")
+ESSENTIALS=("base-devel btrfs-progs exfatprogs e2fsprogs pacman-contrib xorg-xinit i3-wm dunst man-db man-pages inetutils amd-ucode fd unzip xorg-xkill pango xclip")
+ESSENTIALS2=("wget gawk scrot wireplumber xorg-xev git pipewire rsync rclone pipewire-audio pipewire-pulse ripgrep playerctl")
+EXTRAS=("neovim firefox chromium rofi rustup meld aws-cli transmission-cli transmission-qt wezterm copyq otf-monaspace-nerd helvum bat spotifyd bottom htop")
+EXTRAS2=("remmina feh krita gimp rawtherapee nemo xcolor xplr fzf lazygit github-cli hub jq gron bottom glances neofetch font-manager dust peco gradle")
+EXTRAS3=("bitwarden-cli bitwarden polybar arandr autorandr yadm discord")
+AUR=("slack-desktop usbimager android-studio i3lock-color gspt")
 
 # Ask for sudo
 if [ $EUID != 0 ]; then
@@ -35,8 +37,7 @@ sed --in-place 's/= 5/= 20/' /etc/pacman.conf
 sed --in-place 's/#Parallel/Parallel/' /etc/pacman.conf
 
 # Get the essentials
-pacman -Syu --noconfirm --needed $ESSENTIALS
-pacman -S --noconfirm --needed $EXTRAS
+pacman -Syu --noconfirm --needed $ESSENTIALS $ESSENTIALS2
 
 # Set pacman cache to clean up after itself weekly
 echo "Enabling paccache.timer"
@@ -56,7 +57,7 @@ cd ..
 
 # Install PARU list of packages because why not use both?
 echo "Installing PARU defined and AUR packages (see this file to change list of packages installed)"
-sudo -H -u $SUDO_USER bash -c "paru -S --noconfirm --nouseask --sudoloop --needed $PARU $AUR"
+sudo -H -u $SUDO_USER bash -c "paru -S --noconfirm --nouseask --sudoloop --needed $EXTRAS $EXTRAS2 $EXTRAS3 $AUR"
 
 # Setup polybar config in ~ (should this just be pulled via yadm?)
 echo "Setting up ~/.config/polybar/config.ini file"
@@ -67,10 +68,10 @@ cp /etc/polybar/config.ini /home/$SUDO_USER/.config/polybar
 #cp /etc/X11/xinit/xinitrc /home/$SUDO_USER/.xinitrc
 
 # Setup lightdm and lightdm-mini-greeter
-echo "Configuring lightdm and lightdm-mini-greeter"
-sed --in-place 's/#greeter-session/greeter-session/' /etc/lightdm/lightdm.conf
-sed --in-place 's/example-gtk-gnome/lightdm-mini-greeter/' /etc/lightdm/lightdm.conf
-sed --in-place "s/CHANGE_ME/$SUDO_USER/" /etc/lightdm/lightdm-mini-greeter.conf
+# echo "Configuring lightdm and lightdm-mini-greeter"
+# sed --in-place 's/#greeter-session/greeter-session/' /etc/lightdm/lightdm.conf
+# sed --in-place 's/example-gtk-gnome/lightdm-mini-greeter/' /etc/lightdm/lightdm.conf
+# sed --in-place "s/CHANGE_ME/$SUDO_USER/" /etc/lightdm/lightdm-mini-greeter.conf
 
 # Setup change default shell to zsh
 chsh -s $(which zsh) $SUDO_USER
@@ -92,3 +93,8 @@ cp -r /usr/share/pipewire/ /home/$SUDO_USER/.config/pipewire
 chown -fR cduong:cduong /home/$SUDO_USER/.config/pipewire
 sudo -H -u $SUDO_USER bash -c "$(systemctl --user enable pipewire-pulse.service)"
 sudo -H -u $SUDO_USER bash -c "$(systemctl --user enable wireplumber.service)"
+
+# Setup spotifyd
+sudo -H -u $SUDO_USER bash -c "$(systemctl --user enable spotify-d.service)"
+# Setup playerctld
+sudo -H -u $SUDO_USER bash -c "$(systemctl --user enable playerctld.service)"
