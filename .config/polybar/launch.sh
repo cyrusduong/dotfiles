@@ -14,6 +14,7 @@ polybar-msg cmd quit
 if type "xrandr"; then
 	for m in $(xrandr --listmonitors | rg - | cut --delimiter=" " --fields=6); do
 		MONITOR=$m polybar --reload main 2>&1 | tee -a "/tmp/polybar-$m" &
+		sleep 0.05 # Added to always show systray items on primary bar when reloading
 	done
 else
 	polybar --reload example &
