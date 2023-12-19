@@ -55,6 +55,9 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
+# Set focus on window activation (helps windows that request on different workspaces to bubble on its display)
+focus_on_window_activation focus
+
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
@@ -114,12 +117,12 @@ set $ws2 "2"
 set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
-# Left Mon
+# Middle Mon
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-# Middle Mon
+# Left Mon
 set $ws10 "10"
 set $ws11 "11"
 set $ws12 "12"
@@ -145,16 +148,16 @@ workspace 2  output $lg
 workspace 3  output $lg
 workspace 4  output $lg
 workspace 5  output $lg
-workspace 6  output $lmon
-workspace 7  output $lmon
-workspace 8  output $lmon
-workspace 9  output $lmon
-workspace 10 output $lmon
-workspace 11 output $mmon
-workspace 12 output $mmon
-workspace 13 output $mmon
-workspace 14 output $mmon
-workspace 15 output $mmon
+workspace 6  output $mmon
+workspace 7  output $mmon
+workspace 8  output $mmon
+workspace 9  output $mmon
+workspace 10 output $mmon
+workspace 11 output $lmon
+workspace 12 output $lmon
+workspace 13 output $lmon
+workspace 14 output $lmon
+workspace 15 output $lmon
 workspace 16 output $rmon
 workspace 17 output $rmon
 workspace 18 output $rmon

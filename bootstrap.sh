@@ -6,7 +6,7 @@ ESSENTIALS2=("wget gawk wireplumber xorg-xev git pipewire rsync rclone pipewire-
 EXTRAS=("neovim firefox chromium rofi rustup meld aws-cli transmission-cli transmission-qt wezterm copyq otf-monaspace-nerd helvum bat spotifyd bottom htop")
 EXTRAS2=("remmina feh krita gimp rawtherapee nemo xcolor xplr fzf lazygit github-cli hub jq gron bottom glances neofetch font-manager dust peco gradle")
 EXTRAS3=("bitwarden-cli bitwarden polybar arandr autorandr yadm discord tealdeer hacksaw shotgun")
-AUR=("slack-desktop usbimager android-studio i3lock-color gspt-git zoom")
+AUR=("slack-desktop usbimager android-studio i3lock-color spotify zoom")
 
 # Ask for sudo
 if [ $EUID != 0 ]; then
@@ -38,6 +38,9 @@ sed --in-place 's/#Parallel/Parallel/' /etc/pacman.conf
 
 # Get the essentials
 pacman -Syu --noconfirm --needed $ESSENTIALS $ESSENTIALS2
+
+# All the noto fonts (for the unicode support)
+pacman -S $(pacman -Ssq noto-fonts)
 
 # Set pacman cache to clean up after itself weekly
 echo "Enabling paccache.timer"

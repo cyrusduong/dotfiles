@@ -5,7 +5,3 @@ function grubmk() {
 		grub-mkconfig -o /boot/grub/grub.cfg
 	fi
 }
-
-function sp() {
-	tmux attach -t gspt || tmux new -s gspt 'gspt'
-}
