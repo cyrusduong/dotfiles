@@ -36,18 +36,22 @@ exec --no-startup-id dex --autostart --environment i3
 # Setup initial monitor layout using autorandr
 exec --no-startup-id autorandr default
 
+# Start CopyQ clipboard manager
+exec --no-startup-id sleep 0.5 && copyq
+
+# Start flameshot (screenshot util)
+exec --no-startup-id sleep 0.5 && flameshot
+
 # Setup cursor repeat in the current envrionment
 exec_always --no-startup-id xset r rate 250 75
-
-exec_always --no-startup-id flameshot
 
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-control --volume-max 130 up
+bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-control down
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -68,7 +72,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
-bindsym --release $mod+Shift+x xkill
+bindsym --release $mod+Shift+x exec --no-startup-id xkill
 
 # A more modern dmenu replacement is rofi:
 bindsym $mod+p exec --no-startup-id "rofi -show combi -modes combi -combi-modes window,drun,run"
