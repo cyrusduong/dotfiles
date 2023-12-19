@@ -39,19 +39,16 @@ exec --no-startup-id autorandr default
 # Setup cursor repeat in the current envrionment
 exec_always --no-startup-id xset r rate 250 75
 
+exec_always --no-startup-id flameshot
+
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-# Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-bindsym XF86AudioPlay exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -63,6 +60,9 @@ tiling_drag modifier titlebar
 # Set focus on window activation (helps windows that request on different workspaces to bubble on its display)
 focus_on_window_activation focus
 
+# Allow back and forth
+workspace_auto_back_and_forth yes
+
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
@@ -71,7 +71,7 @@ bindsym $mod+Shift+q kill
 bindsym --release $mod+Shift+x xkill
 
 # A more modern dmenu replacement is rofi:
-bindsym $mod+p exec "rofi -modi drun,run -show drun"
+bindsym $mod+p exec --no-startup-id "rofi -show combi -modes combi -combi-modes window,drun,run"
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+Shift+40 exec --no-startup-id i3-dmenu-desktop
@@ -222,24 +222,42 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+  # These bindings trigger as soon as you enter the resize mode
+  
+  # Pressing left will shrink the window’s width.
+  # Pressing right will grow the window’s width.
+  # Pressing up will shrink the window’s height.
+  # Pressing down will grow the window’s height.
+  bindsym Left resize shrink width 10 px or 5 ppt
+  bindsym Down resize grow height 10 px or 5 ppt
+  bindsym Up resize shrink height 10 px or 5 ppt
+  bindsym Right resize grow width 10 px or 5 ppt
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym Left resize shrink width 10 px or 5 ppt
-        bindsym Down resize grow height 10 px or 5 ppt
-        bindsym Up resize shrink height 10 px or 5 ppt
-        bindsym Right resize grow width 10 px or 5 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+  # back to normal: Enter or Escape or $mod+r
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
+
+mode "screengrab" {
+  # TODO: For some reason these do not work. I probably need to put in a bug report
+  # did find https://github.com/i3/i3/pull/5554/files - maybe I need to try the git branch
+  # bindsym --release --whole-window button1 mode "default"
+  # bindsym --release --whole-window button2 mode "default"
+  bindsym p exec --no-startup-id $HOME/.scripts/screengrab.sh; mode "default"
+  bindsym f exec --no-startup-id flameshot gui; mode "default"
+  bindsym Escape mode "default"
+}
+
+mode "record" {
+  # bindsym --release --whole-window button2 exec --no-startup-id killall ffmpeg; mode "default"
+  bindsym Escape exec --no-startup-id killall ffmpeg; mode "default"
+}
+
+bindsym Shift+Print exec --no-startup-id $HOME/.scripts/record.sh; mode "record"
+bindsym Print mode "screengrab"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
