@@ -7,6 +7,14 @@ polybar-msg cmd quit
 # killall -q polybar
 
 # Launch polybar
-echo "---" | tee -a /tmp/polybar.log
-polybar main 2>&1 | tee -a /tmp/polybar.log &
-disown
+# echo "---" | tee -a /tmp/polybar.log
+# polybar main 2>&1 | tee -a /tmp/polybar.log &
+# disown
+
+if type "xrandr"; then
+	for m in $(xrandr --listmonitors | rg - | cut --delimiter=" " --fields=6); do
+		MONITOR=$m polybar --reload main 2>&1 | tee -a "/tmp/polybar-$m" &
+	done
+else
+	polybar --reload example &
+fi
