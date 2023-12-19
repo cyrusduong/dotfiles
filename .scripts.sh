@@ -7,5 +7,5 @@ function grubmk() {
 }
 
 function sp() {
-	tmux attach -t gspt || tmux new -s gspt
+	tmux attach -t gspt || tmux new -s gspt 'gspt'
 }
