@@ -4,4 +4,4 @@ require("config.lazy")
 vim.cmd("set title")
 vim.cmd("set titlelen=128")
 
-vim.o.colorcolumn = "80" --"80,100,120"
+vim.o.colorcolumn = "80,100" --"80,100,120"

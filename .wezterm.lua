@@ -12,7 +12,7 @@ end
 
 config.color_scheme = "Tokyo Night"
 config.font = wezterm.font({
-	family = "MonaspiceNe Nerd Font Propo", -- Proportinal
+	family = "MonaspiceNe Nerd Font Mono", -- Proportinal
 	-- 0 to disable
 	harfbuzz_features = {
 		-- "calt=0",
@@ -45,6 +45,35 @@ config.visual_bell = {
 config.colors = {
 	visual_bell = "#254070",
 }
+
+-- open url with CTRL+P
+config.keys = {
+	{
+		key = "O",
+		mods = "CTRL",
+		action = wezterm.action.QuickSelectArgs({
+			label = "open url",
+			patterns = {
+				"https?://\\S+",
+			},
+			action = wezterm.action_callback(function(window, pane)
+				local url = window:get_selection_text_for_pane(pane)
+				wezterm.log_info("opening: " .. url)
+				wezterm.open_with(url)
+			end),
+		}),
+	},
+}
+
+-- make ECOMM-xxxx task links clickable and open JIRA with them.
+-- sauce: https://wezfurlong.org/wezterm/hyperlinks.html#implicit-hyperlinks
+-- default rules
+config.hyperlink_rules = wezterm.default_hyperlink_rules()
+-- the first matched regex group is captured in $1 (1-indexed)
+table.insert(config.hyperlink_rules, {
+	regex = [[ECOMM\-(\d+)]],
+	format = "https://caesarsdevelopment.atlassian.net/browse/ECOMM-$1",
+})
 
 -- and finally, return the configuration to wezterm
 return config
