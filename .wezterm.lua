@@ -28,7 +28,7 @@ config.max_fps = 120
 config.enable_scroll_bar = true
 
 -- tabs
-config.tab_max_width = 64
+config.tab_max_width = 32
 config.tab_bar_at_bottom = false
 config.hide_tab_bar_if_only_one_tab = true
 
@@ -43,7 +43,7 @@ config.visual_bell = {
 	fade_out_duration_ms = 175,
 }
 config.colors = {
-	visual_bell = "#58D",
+	visual_bell = "#254070",
 }
 
 -- and finally, return the configuration to wezterm

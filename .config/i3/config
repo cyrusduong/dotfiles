@@ -268,6 +268,17 @@ mode "record" {
 bindsym --release Shift+Print exec --no-startup-id $HOME/.scripts/record.sh; mode "record"
 bindsym --release Print mode "screengrab"
 
+
+set $vpn_mode "vpn: [s]tart st[o]p [esc]ape" 
+mode $vpn_mode {
+  bindsym s exec --no-startup-id pritunl-client start xv; mode "default"
+  bindsym o exec --no-startup-id pritunl-client stop xv; mode "default"
+  # bindsym --release --whole-window button2 exec --no-startup-id killall ffmpeg; mode "default"
+  bindsym Escape exec --no-startup-id killall ffmpeg; mode "default"
+}
+
+bindsym $mod+Shift+v mode $vpn_mode
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 # bar {

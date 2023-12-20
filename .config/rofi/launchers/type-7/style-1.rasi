@@ -13,11 +13,13 @@ configuration {
 	modi:                       "combi,drun,run";
   /* ,window"; */
   show-icons:                 true;
-  display-drun:               "";
-  display-run:                "";
-  display-filebrowser:        "";
-  display-window:             "";
-  display-combi:              "";
+  // display-drun:               "";
+  display-drun:               "";
+  // display-run:                "";
+  display-run:                "";
+  // display-filebrowser:        "";
+  // display-window:             "";
+  display-combi:              "";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
 }
@@ -77,7 +79,7 @@ inputbar {
     background-image:            url("~/Pictures/ene-eyes.jpg", width);
     text-color:                  @foreground;
     orientation:                 horizontal;
-    children:                    [ "textbox-prompt-colon", "entry", "dummy", "mode-switcher" ];
+    children:                    [ "entry", "dummy", "mode-switcher" ];
 }
 textbox-prompt-colon {
     enabled:                     true;
@@ -91,13 +93,13 @@ textbox-prompt-colon {
 entry {
     enabled:                     true;
     expand:                      false;
-    width:                       250px;
-    padding:                     12px 16px;
+    width:                       175px;
+    padding:                     12px 24px;
     border-radius:               100%;
     background-color:            @background-alt;
     text-color:                  inherit;
     cursor:                      text;
-    placeholder:                 "Search";
+    placeholder:                 " Search";
     placeholder-color:           inherit;
 }
 dummy {
@@ -121,7 +123,7 @@ button {
     cursor:                      pointer;
 }
 button selected {
-    background-color:            @selected;
+    background-color:            @active;
     text-color:                  @foreground;
 }
 

@@ -61,9 +61,9 @@ configuration {
 	window-thumbnail: false;
 
 	/*---------- Combi settings ----------*/
-/*	combi-modi: "window,run";*/
-/*	combi-hide-mode-prefix: false;*/
-/*	combi-display-format: "{mode} {text}";*/
+  combi-modi: "window,drun";
+  combi-hide-mode-prefix: false;
+  combi-display-format: "{mode} {text}";
 
 	/*---------- History and Sorting ----------*/
 	disable-history: false;
@@ -71,7 +71,8 @@ configuration {
 	max-history-size: 25;
 
 	/*---------- Display setting ----------*/
-	display-window: "Windows";
+	// display-window: "Windows";
+	display-window: "";
 	display-windowcd: "Window CD";
 	display-run: "Run";
 	display-ssh: "SSH";
