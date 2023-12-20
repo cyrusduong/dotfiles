@@ -7,7 +7,7 @@ KEYBOARD_ID=$(xinput | rg Lily58 | tail -n1 | cut -d= -f2 | awk '{print $1}')
 # wpm: words per minute (1 word = 5 characters)
 METRIC=wpm
 FORMAT="%d"
-INTERVAL=5
+INTERVAL=10
 # If you have a keyboard layout that is not listed here yet, create a condition
 # yourself. $3 is the key index. Use `xinput test "AT Translated Set 2 keyboard"`
 # to see key codes in real time.  Be sure to open a pull request for your

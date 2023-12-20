@@ -5,7 +5,7 @@ ESSENTIALS=("base-devel btrfs-progs exfatprogs e2fsprogs pacman-contrib xorg-xin
 ESSENTIALS2=("wget gawk wireplumber xorg-xev git pipewire rsync rclone pipewire-audio pipewire-pulse ripgrep playerctl gnome-keyring seahorse")
 EXTRAS=("neovim firefox chromium rofi rustup meld aws-cli transmission-cli transmission-qt wezterm copyq otf-monaspace-nerd helvum bat spotifyd bottom htop")
 EXTRAS2=("remmina feh krita gimp rawtherapee nemo xcolor xplr fzf lazygit github-cli hub jq gron bottom glances neofetch font-manager dust peco gradle")
-EXTRAS3=("bitwarden-cli bitwarden polybar arandr autorandr yadm discord tealdeer hacksaw shotgun")
+EXTRAS3=("bitwarden-cli bitwarden polybar arandr autorandr yadm discord tealdeer hacksaw shotgun papirus-icon-theme")
 AUR=("slack-desktop usbimager android-studio i3lock-color spotify zoom pulseaudio-control zscroll-git postman-bin asdf-vm")
 
 # Ask for sudo
@@ -112,3 +112,9 @@ sudo pacman-key --keyserver hkp://keyserver.ubuntu.com -r 7568D9BB55FF9E5287D586
 sudo pacman-key --lsign-key 7568D9BB55FF9E5287D586017AE645C0CF8E292A
 sudo pacman -Sy
 sudo pacman -S pritunl-client-electron
+
+# Get the rofi theme we use (and a bunch other)
+# sudo -H -u $SUDO_USER bash -c "$(git clone --depth=1 https://github.com/adi1090x/rofi.git)"
+# sudo -H -u $SUDO_USER bash -c "$(chmod +x /home/$SUDO_USER/rofi/setup.sh)"
+# sudo -H -u $SUDO_USER bash -c "$(chown $SUDO_USER:$SUDO_USER -r /home/$SUDO_USER/rofi/setup.sh)"
+# sudo -H -u $SUDO_USER bash -c "$(cd /home/$SUDO_USER/rofi && ./setup.sh)"
