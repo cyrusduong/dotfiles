@@ -11,7 +11,7 @@ crtc 0
 mode 3840x2160
 pos 1860x0
 primary
-rate 60.00
+rate 120.00
 x-prop-colorspace Default
 x-prop-max_bpc 16
 x-prop-non_desktop 0

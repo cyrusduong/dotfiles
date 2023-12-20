@@ -10,9 +10,6 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
--- This is where you actually apply your config choices
-
--- For example, changing the color scheme:
 config.color_scheme = "Tokyo Night"
 config.font = wezterm.font({
 	family = "MonaspiceNe Nerd Font Propo", -- Proportinal
@@ -24,8 +21,30 @@ config.font = wezterm.font({
 	},
 })
 
+config.scrollback_lines = 25000
+config.max_fps = 120
+
 -- enable scrollbar
 config.enable_scroll_bar = true
+
+-- tabs
+config.tab_max_width = 64
+config.tab_bar_at_bottom = false
+config.hide_tab_bar_if_only_one_tab = true
+
+-- window
+config.window_decorations = "RESIZE"
+
+-- bell
+config.visual_bell = {
+	-- fade_in_function = "EaseIn",
+	fade_in_duration_ms = 25,
+	-- fade_out_function = "EaseOut",
+	fade_out_duration_ms = 175,
+}
+config.colors = {
+	visual_bell = "#58D",
+}
 
 -- and finally, return the configuration to wezterm
 return config
