@@ -38,8 +38,8 @@ alias arst='asdf'
 
 # yadm management
 alias yadma='yadm add -u'
+alias yadmc='yadm commit -m'
 alias yadms='yadm status'
-alias yadmm='yadm commit -m'
 alias yadmp='yadm push'
 
 # vpn
