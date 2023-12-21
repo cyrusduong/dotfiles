@@ -48,6 +48,9 @@ exec_always --no-startup-id xset r rate 250 75
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
+# Use picom compositor
+exec_always --no-startup-id picom --config $HOME/.config/picom/picom.conf
+
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-control --volume-max 130 up
