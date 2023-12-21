@@ -38,6 +38,7 @@ alias arst='asdf'
 
 # yadm management
 alias yadma='yadm add -u'
+alias yadms='yadm status'
 alias yadmm='yadm commit -m'
 alias yadmp='yadm push'
 

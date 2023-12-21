@@ -5,8 +5,8 @@ ESSENTIALS=("base-devel btrfs-progs exfatprogs e2fsprogs pacman-contrib xorg-xin
 ESSENTIALS2=("wget gawk wireplumber xorg-xev git pipewire rsync rclone pipewire-audio pipewire-pulse ripgrep playerctl gnome-keyring seahorse")
 EXTRAS=("neovim firefox chromium rofi rustup meld aws-cli transmission-cli transmission-qt wezterm copyq otf-monaspace-nerd helvum bat spotifyd bottom htop")
 EXTRAS2=("remmina feh krita gimp rawtherapee nemo xcolor xplr fzf lazygit github-cli hub jq gron bottom glances neofetch font-manager dust peco gradle")
-EXTRAS3=("bitwarden-cli bitwarden polybar arandr autorandr yadm discord tealdeer hacksaw shotgun papirus-icon-theme rsync")
-AUR=("slack-desktop usbimager android-studio i3lock-color spotify zoom pulseaudio-control zscroll-git postman-bin asdf-vm picom-ftlabs-git")
+EXTRAS3=("bitwarden-cli bitwarden polybar arandr autorandr yadm discord tealdeer hacksaw shotgun papirus-icon-theme rsync figlet ttf-hanazono ncurses")
+AUR=("slack-desktop usbimager android-studio i3lock-color spotify zoom pulseaudio-control zscroll-git postman-bin asdf-vm picom-ftlabs-git neo-matrix")
 
 # Ask for sudo
 if [ $EUID != 0 ]; then
@@ -115,3 +115,6 @@ sudo pacman -S pritunl-client-electron
 
 # Setup keyboard mnt point
 mkdir /mnt/nano
+
+# Make a symlink to neo-matrix since the AUR build script/makefile(?) doesn't do this
+ln -s /usr/bin/neo-matrix /usr/bin/neo
