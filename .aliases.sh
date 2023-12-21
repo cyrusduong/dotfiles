@@ -6,8 +6,12 @@ alias gets='paru'
 alias yeet='paru -R'
 alias upgrade='paru -Syuv'
 
+# vim
 alias v='nvim'
 alias vim='v'
+
+# git
+alias lg='lazygit'
 
 # open dotfiles
 alias aliases='v ~/.aliases.sh'
@@ -19,7 +23,8 @@ alias sources='v ~/.sources.sh'
 alias i3config='v ~/.config/i3/config'
 alias vconfig='v ~/.config/nvim'
 alias barconfig='v ~/.config/polybar/config.ini'
-alias picomconfig='v ~/.config/picom/picom.conf'
+alias pconfig='v ~/.config/picom/picom.conf'
+alias dconfig='v ~/.config/dunst/dunstrc'
 alias zshconfig='v ~/.zshrc'
 
 # for keyboard
@@ -28,11 +33,17 @@ alias keeb_dl='. ~/personal/lily58-zmk-config/download.sh'
 alias keeb_in='. ~/personal/lily58-zmk-config/install.sh'
 alias keeb_up='keeb_dl && keeb_in'
 
+# runtimes
 alias arst='asdf'
 
+# yadm management
+alias yadma='yadm add -u'
+alias yadmm='yadm commit -m'
+alias yadmp='yadm push'
+
+# vpn
 alias vpn='pritunl-client'
 alias vl='vpn list'
 
-alias lg='lazygit'
-
+# yarn
 alias y='yarn'
