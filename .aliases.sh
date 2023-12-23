@@ -19,11 +19,16 @@ alias exports='v ~/.exports.sh'
 alias scripts='v ~/.scripts.sh'
 alias sources='v ~/.sources.sh'
 
+# set a background
+alias bgpick='rg --files ~/Pictures/w | peco'
+alias setbg='feh --bg-max $(bgpick)'
+
 # open configs
 alias i3config='v ~/.config/i3/config'
 alias vconfig='v ~/.config/nvim'
 alias barconfig='v ~/.config/polybar/config.ini'
-alias pconfig='v ~/.config/picom/picom.conf'
+#alias pconfig='v ~/.config/picom/picom.conf'
+alias compconfig='v ~/.config/compfy.conf'
 alias dconfig='v ~/.config/dunst/dunstrc'
 alias zshconfig='v ~/.zshrc'
 
