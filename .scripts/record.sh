@@ -9,7 +9,7 @@ mkdir -p "$dir"
 coords=$(hacksaw --colour "#FF0000" --guide-thickness 1)
 # Delay for compositor animations
 sleep 0.5
-
+file="$dir/$datenow.mp4"
 echo "$coords" | {
 	IFS=+x read -r w h x y
 
@@ -27,5 +27,5 @@ echo "$coords" | {
 		-pix_fmt yuv420p \
 		-crf 15 \
 		-t 120 \
-		"$dir/$datenow.mp4"
+		"$file"
 }

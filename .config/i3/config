@@ -57,6 +57,7 @@ gaps inner 20
 # Set our background
 exec --no-startup-id feh --bg-max $HOME/Pictures/w/mekaku-city-actors/yesterday.png
 
+bindsym $mod+k exec --no-startup-id pulseaudio-control next-node
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-control --volume-max 130 up
@@ -90,8 +91,8 @@ bindsym $mod+Shift+q kill
 bindsym --release $mod+Shift+x exec --no-startup-id xkill
 
 # Dunst controls
-bindsym $mod+u exec dunstctl close
-bindsym $mod+Shift+u exec dunstctl close-all
+bindsym $mod+d exec dunstctl close
+bindsym $mod+Shift+d exec dunstctl close-all
 bindsym $mod+n exec dunstctl action && exec dunstctl close
 bindsym $mod+Shift+n exec $HOME/.config/polybar/scripts/dunst_toggle.sh
 
@@ -272,18 +273,18 @@ mode "screengrab" {
   # did find https://github.com/i3/i3/pull/5554/files - maybe I need to try the git branch
   # bindsym --release --whole-window button1 mode "default"
   # bindsym --release --whole-window button2 mode "default"
-  bindsym p exec --no-startup-id $HOME/.scripts/screengrab.sh; mode "default"; exec sleep 2 && 
+  bindsym p exec --no-startup-id $HOME/.scripts/screengrab.sh; mode "default"
   bindsym f exec --no-startup-id flameshot gui; mode "default"
   bindsym Escape mode "default"
 }
 
-mode "record" {
-  bindsym $mod+p exec --no-startup-id $HOME/.config/rofi/launchers/type-7/launcher.sh
-  # bindsym --release --whole-window button2 exec --no-startup-id killall ffmpeg; mode "default"
-  bindsym Escape exec --no-startup-id killall ffmpeg; mode "default"
+set $rec_mode "rec. stop:[mod+esc]"
+
+mode $rec_mode {
+  bindsym $mod+Escape exec --no-startup-id $HOME/.scripts/stop_record.sh ;mode "default"
 }
 
-bindsym --release Shift+Print exec --no-startup-id $HOME/.scripts/record.sh; mode "record"
+bindsym --release Shift+Print exec --no-startup-id $HOME/.scripts/record.sh; mode $rec_mode
 bindsym --release Print mode "screengrab"
 
 set $vpn_mode "vpn: [s]tart st[o]p [esc]ape" 

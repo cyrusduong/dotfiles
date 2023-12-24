@@ -13,7 +13,7 @@ if [ "$1" = "day" ]; then
 	timesheet_file="$timesheet_dir/$given_date.log"
 
 	if [ ! -f "$timesheet_file" ]; then
-		echo "No log file found for $given_date."
+		echo "No $given_date.log found"
 		exit 1
 	fi
 
