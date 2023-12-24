@@ -30,7 +30,7 @@ alias barconfig='v ~/.config/polybar/config.ini'
 #alias pconfig='v ~/.config/picom/picom.conf'
 alias compconfig='v ~/.config/compfy.conf'
 alias dconfig='v ~/.config/dunst/dunstrc'
-alias zshconfig='v ~/.zshrc'
+alias zconfig='v ~/.zshrc'
 
 # for keyboard
 alias keymap='v ~/personal/lily58-zmk-config/config/lily58.keymap'

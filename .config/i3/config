@@ -74,6 +74,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # forces focus activation (helps windows that request on different workspaces to grab focus)
+# possible values: smart, urgent, focus, none
 focus_on_window_activation urgent
 
 # Allow back and forth
@@ -87,6 +88,12 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 bindsym --release $mod+Shift+x exec --no-startup-id xkill
+
+# Dunst controls
+bindsym $mod+u exec dunstctl close
+bindsym $mod+Shift+u exec dunstctl close-all
+bindsym $mod+n exec dunstctl action
+bindsym $mod+Shift+n exec $HOME/.config/polybar/scripts/dunst_toggle.sh
 
 # A more modern dmenu replacement is rofi:
 # bindsym $mod+p exec --no-startup-id "rofi -show combi -modes combi -combi-modes window,drun,run"
