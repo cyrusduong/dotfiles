@@ -52,7 +52,7 @@ exec_always --no-startup-id xset r rate 250 75
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Set gaps!
-gaps inner 10
+gaps inner 20
 
 # Set our background
 exec --no-startup-id feh --bg-max $HOME/Pictures/w/mekaku-city-actors/yesterday.png
@@ -286,11 +286,10 @@ mode "record" {
 bindsym --release Shift+Print exec --no-startup-id $HOME/.scripts/record.sh; mode "record"
 bindsym --release Print mode "screengrab"
 
-
 set $vpn_mode "vpn: [s]tart st[o]p [esc]ape" 
 mode $vpn_mode {
-  bindsym s exec --no-startup-id pritunl-client start xv; mode "default"
-  bindsym o exec --no-startup-id pritunl-client stop xv; mode "default"
+  bindsym s exec --no-startup-id pritunl-client start xv; exec $HOME/.scripts/vpn_logger.sh start; mode "default"
+  bindsym o exec --no-startup-id pritunl-client stop xv; exec $HOME/.scripts/vpn_logger.sh stop; mode "default"
   # bindsym --release --whole-window button2 exec --no-startup-id killall ffmpeg; mode "default"
   bindsym Escape exec --no-startup-id killall ffmpeg; mode "default"
 }
