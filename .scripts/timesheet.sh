@@ -18,11 +18,11 @@ if [ "$1" = "day" ]; then
 	fi
 
 	start_time=0
-	stop_time=0
 	total_duration=0
 	now=$(date +%s)
 
 	while read -r line; do
+		stop_time=0
 		timestamp=$(echo "$line" | cut --delimiter=" " -f1)
 		action=$(echo "$line" | cut --delimiter=" " -f2)
 
@@ -33,7 +33,18 @@ if [ "$1" = "day" ]; then
 			duration=$((stop_time - start_time))
 			total_duration=$((total_duration + duration))
 		fi
+
 	done <"$timesheet_file"
+
+	# If stop_time was not our last line in log and the log is for today
+	if [ $stop_time = 0 ]; then
+		today=$(date '+%Y-%m-%d')
+		if [ $given_date = $today ]; then
+			# Assume vpn ist still on and assume $now as the "stop_time"
+			duration=$((now - start_time))
+			total_duration=$((total_duration + duration))
+		fi
+	fi
 
 	duration_hours=$(awk "BEGIN {printf \"%.2f\", $total_duration / 3600}")
 	echo "$given_date: $duration_hours hours ($total_duration seconds)"
@@ -52,17 +63,18 @@ elif [ "$1" = "since" ]; then
 	done
 elif [ "$1" = "yesterday" ]; then
 	# Calculate yesterday's date
-	end_date=$(date '+%s')
-	start_date_unix=$(($end_date - 1 * 24 * 3600))            # 6 days ago (including today)
-	start_date=$(date -d "@$((start_date_unix))" '+%Y-%m-%d') # Convert Unix timestamp to YYYY-MM-DD
-	"$0" day "$start_date"
+	now=$(date '+%s')
+	yesterday_unix=$(($now - 1 * 24 * 3600))
+	yesterday_date=$(date -d "@$((yesterday_unix))" '+%Y-%m-%d') # Convert Unix timestamp to YYYY-MM-DD
+	"$0" day "$yesterday_date"
 elif [ "$1" = "today" ]; then
-	"$0" day $(date '+%Y-%m-%d')
+	today=$(date '+%Y-%m-%d')
+	"$0" day $today
 elif [ "$1" = "week" ]; then
 	# Calculate the total duration for the past 7 days (including today)
 	end_date=$(date '+%s')
-	start_date_unix=$(($end_date - 6 * 24 * 3600))            # 6 days ago (including today)
-	start_date=$(date -d "@$((start_date_unix))" '+%Y-%m-%d') # Convert Unix timestamp to YYYY-MM-DD
+	start_date_unix=$(($end_date - 6 * 24 * 3600))
+	start_date=$(date -d "@$((start_date_unix))" '+%Y-%m-%d')
 	"$0" since "$start_date"
 else
 	echo "Usage: $0 [today|yesterday|week|day YYYY-MM-DD|since YYYY-MM-DD]"
