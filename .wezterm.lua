@@ -65,6 +65,14 @@ config.keys = {
 	},
 }
 
+-- Set the cursor style
+-- Acceptable values are SteadyBlock, BlinkingBlock, SteadyUnderline,
+-- BlinkingUnderline, SteadyBar, and BlinkingBar.
+config.default_cursor_style = "BlinkingUnderline"
+config.cursor_blink_rate = 500
+config.cursor_blink_ease_in = "Linear"
+config.cursor_blink_ease_out = "Linear"
+
 -- make ECOMM-xxxx task links clickable and open JIRA with them.
 -- sauce: https://wezfurlong.org/wezterm/hyperlinks.html#implicit-hyperlinks
 -- default rules

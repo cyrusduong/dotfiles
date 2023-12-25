@@ -8,7 +8,7 @@ EXTRAS2=("remmina feh krita gimp rawtherapee nemo xcolor xplr fzf lazygit github
 EXTRAS3=("bitwarden-cli bitwarden polybar arandr autorandr yadm discord tealdeer hacksaw shotgun papirus-icon-theme rsync figlet ttf-hanazono ncurses xorg-xsetroot xorg-xwininfo")
 EXTRAS3=("httpie")
 AUR=("slack-desktop usbimager android-studio i3lock-color spotify zoom pulseaudio-control zscroll-git postman-bin neo-matrix compfy")
-AUR2=("rtx")
+AUR2=("rtx starship-git")
 
 # Ask for sudo
 if [ $EUID != 0 ]; then
