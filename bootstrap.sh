@@ -6,7 +6,9 @@ ESSENTIALS2=("wget gawk wireplumber xorg-xev git pipewire rsync rclone pipewire-
 EXTRAS=("neovim firefox chromium rofi rustup meld aws-cli transmission-cli transmission-qt wezterm copyq otf-monaspace-nerd helvum bat spotifyd bottom htop")
 EXTRAS2=("remmina feh krita gimp rawtherapee nemo xcolor xplr fzf lazygit github-cli hub jq gron bottom glances neofetch font-manager dust peco gradle")
 EXTRAS3=("bitwarden-cli bitwarden polybar arandr autorandr yadm discord tealdeer hacksaw shotgun papirus-icon-theme rsync figlet ttf-hanazono ncurses xorg-xsetroot xorg-xwininfo")
-AUR=("slack-desktop usbimager android-studio i3lock-color spotify zoom pulseaudio-control zscroll-git postman-bin asdf-vm neo-matrix compfy")
+EXTRAS3=("httpie")
+AUR=("slack-desktop usbimager android-studio i3lock-color spotify zoom pulseaudio-control zscroll-git postman-bin neo-matrix compfy")
+AUR2=("rtx")
 
 # Ask for sudo
 if [ $EUID != 0 ]; then

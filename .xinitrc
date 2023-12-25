@@ -34,5 +34,4 @@ xset r rate 250 75
 
 # Start screen layout
 autorandr default
-
 exec i3

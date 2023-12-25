@@ -9,6 +9,7 @@ alias upgrade='paru -Syuv'
 # vim
 alias vim='nvim'
 alias v='vim'
+alias vcacheclean='rm ~/.local/state/nvim/swap/*'
 
 # git
 alias lg='lazygit'
@@ -30,6 +31,7 @@ alias bconfig='v ~/.config/polybar/config.ini'
 #alias pconfig='v ~/.config/picom/picom.conf'
 alias cconfig='v ~/.config/compfy.conf'
 alias dconfig='v ~/.config/dunst/dunstrc'
+alias wconfig='v ~/.wezterm.lua'
 alias zconfig='v ~/.zshrc'
 
 # for keyboard
@@ -38,8 +40,8 @@ alias keeb_dl='. ~/personal/lily58-zmk-config/download.sh'
 alias keeb_in='. ~/personal/lily58-zmk-config/install.sh'
 alias keeb_up='keeb_dl && keeb_in'
 
-# runtimes
-alias arst='asdf'
+# runtimes (used to use asdf, but rtx is better)
+alias arst='rtx'
 
 # yadm management
 alias yadma='yadm add -u'
