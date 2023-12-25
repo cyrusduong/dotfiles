@@ -7,8 +7,8 @@ alias yeet='paru -R'
 alias upgrade='paru -Syuv'
 
 # vim
-alias v='nvim'
-alias vim='v'
+alias vim='nvim'
+alias v='vim'
 
 # git
 alias lg='lazygit'

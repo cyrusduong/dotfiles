@@ -55,7 +55,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 gaps inner 20
 
 # Set our background
-exec --no-startup-id feh --bg-max $HOME/Pictures/w/mekaku-city-actors/yesterday.png
+exec --no-startup-id feh --bg-max $HOME/Pictures/w/yesterday.png
 
 bindsym $mod+k exec --no-startup-id pulseaudio-control next-node
 bindsym XF86AudioNext exec --no-startup-id playerctl next
