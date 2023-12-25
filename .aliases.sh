@@ -55,3 +55,6 @@ alias vl='vpn list'
 
 # yarn
 alias y='yarn'
+
+# call timesheet.sh
+alias timesheet="timesheet.sh"

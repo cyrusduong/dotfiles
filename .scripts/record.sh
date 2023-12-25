@@ -6,7 +6,7 @@ datenow=$(date +%F_%H-%M-%S)
 
 mkdir -p "$dir"
 
-coords=$(hacksaw --colour "#FF0000" --guide-thickness 1)
+coords=$(hacksaw --colour "#AA0000" --guide-thickness 2)
 # Delay for compositor animations
 sleep 0.5
 file="$dir/$datenow.mp4"
@@ -18,7 +18,7 @@ echo "$coords" | {
 
 	ffmpeg \
 		-loglevel error \
-		-framerate 30 \
+		-framerate 20 \
 		-f x11grab \
 		-s "${w}x${h}" \
 		-i ":0.0+$x,$y" \

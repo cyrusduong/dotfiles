@@ -1,5 +1,5 @@
 #!/bin/sh
-selection=$(hacksaw --colour "#FF0000" --guide-thickness 1)
+selection=$(hacksaw --colour "#AA0000" --guide-thickness 2)
 now=$(date '+%Y-%m-%d_%H-%M-%S')
 file_name="$now.png"
 file_dir="$HOME/screengrabs"
