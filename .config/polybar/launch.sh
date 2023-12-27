@@ -1,12 +1,21 @@
 #!/usr/bin/env bash
 
-killall -q polybar
-sleep 0.25
+# Kill all polybar and associated scripts
+killall --quiet --signal TERM -- polybar
+killall --quiet -- hackspeed.sh
+killall --quiet -- scroll_spotify_status.sh
+killall --quiet -- zscroll
+
+# Wait for them to close out
+while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+# Kill any stuck polybars
+killall --quiet --signal KILL -- polybar
 
 if type "xrandr"; then
+	# dunstify "xrandr"
 	for m in $(xrandr --listmonitors | awk '{print $4}'); do
+		# dunstify "initializing $m"
 		MONITOR=$m polybar --reload main 2>&1 | tee -a "/tmp/polybar-$m" &
-		sleep 0.1 # Added to always show systray items on primary bar when reloading
 	done
 else
 	polybar --reload example &

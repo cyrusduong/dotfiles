@@ -4,7 +4,8 @@ alias refresh='source ~/.zshrc'
 alias get='paru -S --skipreview'
 alias gets='paru'
 alias yeet='paru -R'
-alias upgrade='paru -Syuv'
+alias pup='paru -Syuv'
+alias pups='paru -Syuuv'
 
 # vim
 alias vim='nvim'
