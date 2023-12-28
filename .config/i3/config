@@ -91,7 +91,7 @@ exec_always --no-startup-id xset r rate 250 75
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # wallpaper / background
-exec --no-startup-id sleep 0.25 && feh --bg-max $HOME/Pictures/w/kogecha/fxxx.jpg
+exec --no-startup-id sleep 2 && feh --bg-max $HOME/Pictures/w/kogecha/fxxx.jpg
 
 # gaps!
 gaps inner 20
@@ -195,7 +195,7 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-control --volume-max 130 up
 bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-control down
-bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioPlay exec --no-startup-id playerctl --player ncspot play-pause
 
 # Color picker
 bindsym --release $mod+Shift+c exec --no-startup-id xcolor -s

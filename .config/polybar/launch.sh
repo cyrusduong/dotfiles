@@ -6,8 +6,10 @@ killall --quiet -- hackspeed.sh
 killall --quiet -- scroll_spotify_status.sh
 killall --quiet -- zscroll
 
-# Wait for them to close out
-while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+# Roughly how long it takes to close
+sleep 2
+# Wait for them to close out (it will still hang for some reason...)
+# while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 # Kill any stuck polybars
 killall --quiet --signal KILL -- polybar
 
