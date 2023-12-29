@@ -18,22 +18,30 @@ if [ "$1" = "day" ]; then
 	fi
 
 	start_time=0
+	stop_time=0
 	total_duration=0
+	last_action="stop"
 	now=$(date +%s)
 
 	while read -r line; do
-		stop_time=0
 		timestamp=$(echo "$line" | cut --delimiter=" " -f1)
 		action=$(echo "$line" | cut --delimiter=" " -f2)
 
 		if [ "$action" = "start" ]; then
-			start_time=$timestamp
+			# Prevents start times being assinged when seen multiple times in a row,
+			# don't move the first start_time (no-op)
+			if [ "$last_action" = "stop" ]; then
+				start_time=$timestamp
+			fi
+			last_action=$action
 		elif [ "$action" = "stop" ]; then
 			stop_time=$timestamp
 			duration=$((stop_time - start_time))
 			total_duration=$((total_duration + duration))
+			last_action=$action
 		fi
 
+		echo $last_action $start_time $stop_time
 	done <"$timesheet_file"
 
 	# If stop_time was not our last line in log and the log is for today

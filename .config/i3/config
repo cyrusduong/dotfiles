@@ -85,7 +85,7 @@ exec --no-startup-id sleep 0.5 && flameshot
 exec_always --no-startup-id compfy 
 
 # Setup cursor repeat in the current envrionment
-exec_always --no-startup-id xset r rate 250 75
+exec_always --no-startup-id xset r rate 200 80
 
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -256,6 +256,9 @@ bindsym $mod+x focus parent
 
 # focus the child container
 # bindsym $mod+a focus child
+
+# Emoji picker
+bindsym $mod+b exec rofi -theme $HOME/.config/rofi/launchers/type-1/style-1.rasi -modi emoji -show
 #***** Binds end (should be copied to recording occasionally) *****
 
 
