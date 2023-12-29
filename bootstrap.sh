@@ -3,12 +3,13 @@
 # Add packages wanted in bootstrap
 ESSENTIALS=("base-devel btrfs-progs exfatprogs e2fsprogs pacman-contrib xorg-xinit i3-wm dunst man-db man-pages inetutils amd-ucode fd unzip xorg-xkill pango xclip")
 ESSENTIALS2=("wget gawk wireplumber xorg-xev git pipewire rsync rclone pipewire-audio pipewire-pulse ripgrep playerctl gnome-keyring seahorse")
-EXTRAS=("neovim firefox chromium rofi rustup meld aws-cli transmission-cli transmission-qt wezterm copyq otf-monaspace-nerd helvum bat spotifyd bottom htop")
+EXTRAS=("neovim firefox chromium rofi rustup meld aws-cli transmission-cli transmission-qt wezterm copyq otf-monaspace-nerd helvum bat bottom htop")
 EXTRAS2=("remmina feh krita gimp rawtherapee nemo xcolor xplr fzf lazygit github-cli hub jq gron bottom glances neofetch font-manager dust peco gradle")
 EXTRAS3=("bitwarden-cli bitwarden polybar arandr autorandr yadm discord tealdeer hacksaw shotgun papirus-icon-theme rsync figlet ttf-hanazono ncurses xorg-xsetroot xorg-xwininfo")
 EXTRAS3=("httpie flowblade obs-studio")
-AUR=("slack-desktop usbimager android-studio i3lock-color spotify zoom pulseaudio-control zscroll-git postman-bin neo-matrix compfy")
+AUR=("slack-desktop usbimager android-studio spotify zoom pulseaudio-control zscroll-git postman-bin neo-matrix compfy")
 AUR2=("rtx starship-git wakeonlan ncspot-bin xplorer-bin")
+FINAL="$EXTRAS $EXTRAS2 $EXTRAS3 $AUR $AUR2"
 
 # Ask for sudo
 if [ $EUID != 0 ]; then
@@ -81,9 +82,6 @@ cp /etc/polybar/config.ini /home/$SUDO_USER/.config/polybar
 # Setup change default shell to zsh
 chsh -s $(which zsh) $SUDO_USER
 
-# Install oh-my-zsh
-sudo -H -u $SUDO_USER bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 # Install lazyvim
 mv /home/$SUDO_USER/config/nvim{,.bak}
 mv /home/$SUDO_USER/.local/share/nvim{,.bak}
@@ -99,12 +97,10 @@ chown -fR cduong:cduong /home/$SUDO_USER/.config/pipewire
 sudo -H -u $SUDO_USER bash -c "$(systemctl --user enable pipewire-pulse.service)"
 sudo -H -u $SUDO_USER bash -c "$(systemctl --user enable wireplumber.service)"
 
-# Setup spotifyd
-sudo -H -u $SUDO_USER bash -c "$(systemctl --user enable spotify-d.service)"
 # Setup playerctld
 sudo -H -u $SUDO_USER bash -c "$(systemctl --user enable playerctld.service)"
 
-# Get pritunl from official pritunl client repo
+# Conditionally Get pritunl from official pritunl client repo
 sudo tee -a /etc/pacman.conf <<EOF
 [pritunl]
 Server = https://repo.pritunl.com/stable/pacman
@@ -120,3 +116,8 @@ mkdir /mnt/nano
 
 # Make a symlink to neo-matrix since the AUR build script/makefile(?) doesn't do this
 ln -s /usr/bin/neo-matrix /usr/bin/neo
+
+# due to how oh-my-zsh installs it changes and drops us into a new shell when it does.
+# We need to install it last because of this.
+# Install oh-my-zsh
+sudo -H -u $SUDO_USER bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
