@@ -6,12 +6,12 @@ ESSENTIALS2=("wget gawk wireplumber xorg-xev git pipewire rsync rclone pipewire-
 EXTRAS1=("neovim firefox chromium rofi rustup meld aws-cli transmission-cli transmission-qt wezterm copyq otf-monaspace-nerd helvum bat bottom htop")
 EXTRAS2=("remmina feh krita gimp rawtherapee nemo xcolor xplr fzf lazygit github-cli hub jq gron bottom glances neofetch font-manager dust peco gradle")
 EXTRAS3=("bitwarden-cli bitwarden polybar arandr autorandr yadm discord tealdeer hacksaw shotgun papirus-icon-theme rsync figlet ttf-hanazono")
-EXTRAS3=("ncurses xorg-xsetroot xorg-xwininfo httpie flowblade obs-studio")
+EXTRAS4=("ncurses xorg-xsetroot xorg-xwininfo httpie flowblade obs-studio")
 AUR1=("slack-desktop usbimager android-studio spotify zoom pulseaudio-control zscroll-git postman-bin neo-matrix compfy")
 AUR2=("rtx starship-git wakeonlan ncspot-bin xplorer-bin")
 
 ESSENTIALS="$ESSENTIALS1 $ESSENTIALS2"
-EXTRAS="$EXTRAS1 $EXTRAS2 $EXTRAS3"
+EXTRAS="$EXTRAS1 $EXTRAS2 $EXTRAS3 $EXTRAS4"
 AUR="$AUR1 $AUR2"
 
 # Ask for sudo
