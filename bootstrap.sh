@@ -64,20 +64,6 @@ cd ..
 echo "Installing AUR packages"
 sudo -H -u $SUDO_USER bash -c "paru -S --noconfirm --nouseask --sudoloop --needed $AUR"
 
-# Setup polybar config in ~ (should this just be pulled via yadm?)
-echo "Setting up ~/.config/polybar/config.ini file"
-mkdir -p /home/$SUDO_USER/.config/polybar
-cp /etc/polybar/config.ini /home/$SUDO_USER/.config/polybar
-
-# Install lazyvim
-mv /home/$SUDO_USER/config/nvim{,.bak}
-mv /home/$SUDO_USER/.local/share/nvim{,.bak}
-mv /home/$SUDO_USER/.local/state/nvim{,.bak}
-mv /home/$SUDO_USER/.cache/nvim{,.bak}
-sudo -H -u $SUDO_USER bash -c "$(git clone https://github.com/LazyVim/starter /home/$SUDO_USER/.config/nvim)"
-rm -rf /home/$SUDO_USER/.config/nvim/.git
-chown -fR cduong:cduong /home/$SUDO_USER/.config/nvim
-
 # Setup pipewire
 cp -r /usr/share/pipewire/ /home/$SUDO_USER/.config/pipewire
 chown -fR cduong:cduong /home/$SUDO_USER/.config/pipewire
