@@ -44,8 +44,8 @@ sed --in-place 's/#Parallel/Parallel/' /etc/pacman.conf
 
 # Setup rust toolchain
 echo "Setting up rust toolchain to stable for this machine"
-rustup toolchain install stable
-rustup default stable
+sudo -H -u $SUDO_USER bash -c 'rustup toolchain install stable'
+sudo -H -u $SUDO_USER bash -c 'rustup default stable'
 
 # Get the essentials
 pacman -Syu --noconfirm --needed $ESSENTIALS $EXTRAS
