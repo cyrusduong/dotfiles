@@ -20,6 +20,11 @@ if [ $EUID != 0 ]; then
 	exit $?
 fi
 
+# Update pacman for 20 parallel downloads at a time
+echo "Setting up /etc/pacman.conf"
+sed --in-place 's/= 5/= 20/' /etc/pacman.conf
+sed --in-place 's/#Parallel/Parallel/' /etc/pacman.conf
+
 # Get reflector first thing
 pacman -Syu --noconfirm --needed reflector
 
@@ -30,17 +35,15 @@ cp /etc/xdg/reflector/reflector.conf /etc/xdg/reflector/reflector.conf.bak
 echo "Setting up /etc/xdg/reflector/reflector.conf"
 sed --in-place 's/France,Germany/us/' /etc/xdg/reflector/reflector.conf
 sed --in-place 's/^# --country/--country/' /etc/xdg/reflector/reflector.conf
-sed --in-place 's/5/50/' /etc/xdg/reflector/reflector.conf
+sed --in-place 's/5/10/' /etc/xdg/reflector/reflector.conf
 sed --in-place 's/time/rate/' /etc/xdg/reflector/reflector.conf
 
 echo "Enabling reflector.timer"
 systemctl enable reflector.timer
 systemctl start reflector.timer
 
-# Update pacman for 20 parallel downloads at a time
-echo "Setting up /etc/pacman.conf"
-sed --in-place 's/= 5/= 20/' /etc/pacman.conf
-sed --in-place 's/#Parallel/Parallel/' /etc/pacman.conf
+echo "Starting reflector now"
+systemctl start reflector.service
 
 # Setup rust toolchain
 echo "Setting up rust toolchain to stable for this machine"
