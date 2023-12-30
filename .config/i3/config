@@ -77,10 +77,10 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id autorandr default
 
 # Start CopyQ clipboard manager
-exec --no-startup-id sleep 0.5 && copyq
+exec --no-startup-id sleep 3.5 && copyq
 
 # Start flameshot (screenshot util)
-exec --no-startup-id sleep 0.5 && flameshot
+exec --no-startup-id sleep 3 && flameshot
 
 # Ensure compositor starts
 exec_always --no-startup-id compfy 
