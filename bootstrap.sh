@@ -14,6 +14,8 @@ ESSENTIALS="$ESSENTIALS1 $ESSENTIALS2"
 EXTRAS="$EXTRAS1 $EXTRAS2 $EXTRAS3 $EXTRAS4"
 AUR="$AUR1 $AUR2"
 
+touch .secrets.sh
+
 # Ask for sudo
 if [ $EUID != 0 ]; then
 	sudo "$0" "$@"
@@ -47,7 +49,7 @@ systemctl start reflector.service
 
 # Setup rust toolchain
 echo "Setting up rust toolchain to stable for this machine"
-sudo -H -u $SUDO_USER bash -c 'rustup toolchain install stable'
+# sudo -H -u $SUDO_USER bash -c 'rustup toolchain install stable'
 sudo -H -u $SUDO_USER bash -c 'rustup default stable'
 
 # Get the essentials
@@ -58,14 +60,17 @@ echo "Enabling paccache.timer"
 systemctl enable paccache.timer
 
 # Setup paru using $SUDO_USER (so permissions are ok)
-echo "Cloning paru"
-sudo -H -u $SUDO_USER bash -c 'git clone https://aur.archlinux.org/paru.git'
-cd paru
-sudo -H -u $SUDO_USER bash -c 'makepkg -si'
-cd ..
+which paru
+if [ $? -eq 1 ]; then
+	echo "Cloning paru"
+	sudo -H -u $SUDO_USER bash -c 'git clone https://aur.archlinux.org/paru.git'
+	cd paru
+	sudo -H -u $SUDO_USER bash -c 'makepkg -si'
+	cd ..
+fi
 
 echo "Installing AUR packages"
-sudo -H -u $SUDO_USER bash -c "paru -S --noconfirm --nouseask --sudoloop --needed $AUR"
+sudo -H -u $SUDO_USER bash -c "paru -S --nouseask --skipreview --sudoloop --needed $AUR"
 
 # Setup pipewire
 cp -r /usr/share/pipewire/ /home/$SUDO_USER/.config/pipewire
