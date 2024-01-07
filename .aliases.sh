@@ -36,13 +36,17 @@ alias wconfig='v ~/.wezterm.lua'
 alias zconfig='v ~/.zshrc'
 
 # for keyboard
-alias keymap='v ~/personal/lily58-zmk-config/config/lily58.keymap'
-alias keeb_dl='. ~/personal/lily58-zmk-config/download.sh'
-alias keeb_in='. ~/personal/lily58-zmk-config/install.sh'
+# alias keymap='v ~/personal/lily58-zmk-config/config/lily58.keymap'
+# alias keymap='v ~/personal/lily58-zmk-config/config/lily58.keymap'
+# alias keeb_dl='. ~/personal/lily58-zmk-config/download.sh'
+# alias keeb_in='. ~/personal/lily58-zmk-config/install.sh'
+alias keymap='v ~/personal/corne-zmk-config/config/corne.keymap'
+alias keeb_dl='. ~/personal/corne-zmk-config/download.sh'
+alias keeb_in='. ~/personal/corne-zmk-config/install.sh'
 alias keeb_up='keeb_dl && keeb_in'
 
-# runtimes (used to use asdf, but rtx is better)
-alias arst='rtx'
+# runtimes (used to use asdf, but mise is better)
+alias arst='mise'
 
 # yadm management
 alias yadma='yadm add -u'

@@ -232,14 +232,14 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+h split h
+# split in vertical / horizontal orientation
+bindsym $mod+h split toggle
 
 # split in vertical orientation
-bindsym $mod+v split v
+# bindsym $mod+v split v
 
 # open copyq
-bindsym $alt+v exec --no-startup-id copyq show
+bindsym $mod+v exec --no-startup-id copyq show
 
 # enter fullscreen mode for the focused container
 bindsym $mod+F11 fullscreen toggle
@@ -371,8 +371,8 @@ mode $mode_rec {
   bindsym $mod+Shift+Down move down
   bindsym $mod+Shift+Up move up
   bindsym $mod+Shift+Right move right
-  bindsym $mod+h split h
-  bindsym $mod+v split v
+  bindsym $mod+h split toggle
+  bindsym $mod+v exec --no-startup-id copyq show
   bindsym $mod+F11 fullscreen toggle
   bindsym $mod+s layout stacking
   bindsym $mod+t layout tabbed

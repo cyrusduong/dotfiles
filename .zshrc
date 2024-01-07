@@ -76,7 +76,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  dirhistory
+  # dirhistory
   dirpersist
   extract
   fd
@@ -88,7 +88,7 @@ plugins=(
   history
   isodate
   last-working-dir
-  rtx
+  mise
   safe-paste
   starship
   sudo

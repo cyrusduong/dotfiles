@@ -46,10 +46,10 @@ config.colors = {
 	visual_bell = "#254070",
 }
 
--- open url with CTRL+P
+-- open url with CTRL+o
 config.keys = {
 	{
-		key = "O",
+		key = "o",
 		mods = "CTRL",
 		action = wezterm.action.QuickSelectArgs({
 			label = "open url",
