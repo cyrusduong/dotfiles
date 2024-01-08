@@ -263,6 +263,9 @@ bindsym $mod+x focus parent
 
 # Emoji picker
 bindsym $mod+b exec rofi -theme $HOME/.config/rofi/launchers/type-1/style-1.rasi -modi emoji -show
+
+# Bitwarden rofi
+bindsym $alt+p exec bwmenu --clear 15 --auto-lock 43200
 #***** Binds end (should be copied to recording occasionally) *****
 
 
@@ -380,6 +383,7 @@ mode $mode_rec {
   bindsym $mod+Shift+space floating toggle
   bindsym $mod+space focus mode_toggle
   bindsym $mod+x focus parent
+  bindsym $mod+b exec rofi -theme $HOME/.config/rofi/launchers/type-1/style-1.rasi -modi emoji -show
 }
 bindsym --release Shift+Print exec --no-startup-id $HOME/.scripts/record.sh; mode $mode_rec
 
