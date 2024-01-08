@@ -8,7 +8,7 @@ EXTRAS2=("remmina feh krita gimp rawtherapee nemo xcolor xplr fzf lazygit github
 EXTRAS3=("bitwarden-cli bitwarden polybar arandr autorandr yadm discord tealdeer hacksaw shotgun papirus-icon-theme rsync figlet ttf-hanazono")
 EXTRAS4=("ncurses xorg-xsetroot xorg-xwininfo httpie flowblade obs-studio rofi-emoji")
 AUR1=("slack-desktop usbimager android-studio spotify zoom pulseaudio-control zscroll-git postman-bin neo-matrix compfy")
-AUR2=("rtx starship-git wakeonlan ncspot-bin xplorer-bin")
+AUR2=("rtx starship-git wakeonlan ncspot-bin xplorer-bin bitwarden-rofi")
 
 ESSENTIALS="$ESSENTIALS1 $ESSENTIALS2"
 EXTRAS="$EXTRAS1 $EXTRAS2 $EXTRAS3 $EXTRAS4"
