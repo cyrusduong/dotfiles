@@ -24,6 +24,7 @@ alias sources='v ~/.sources.sh'
 # set a background
 alias bgpick='rg --files ~/Pictures/w | peco'
 alias setbg='feh --bg-max $(bgpick)'
+alias bg='feh --bg-max $(bgpick)'
 
 # open configs
 alias i3config='v ~/.config/i3/config'
@@ -32,15 +33,16 @@ alias bconfig='v ~/.config/polybar/config.ini'
 #alias pconfig='v ~/.config/picom/picom.conf'
 alias cconfig='v ~/.config/compfy.conf'
 alias dconfig='v ~/.config/dunst/dunstrc'
+alias lgconfig='v ~/.config/lazygit/config.yml'
 alias wconfig='v ~/.wezterm.lua'
 alias zconfig='v ~/.zshrc'
 
 # for keyboard
-# alias keymap='v ~/personal/lily58-zmk-config/config/lily58.keymap'
-# alias keymap='v ~/personal/lily58-zmk-config/config/lily58.keymap'
+# alias keymap='cd ~/personal/lily58-zmk-config/config/lily58.keymap; v ~/personal/lily58-zmk-config/config/lily58.keymap'
+# alias keymap='cd ~/personal/lily58-zmk-config/config/lily58.keymap; v ~/personal/lily58-zmk-config/config/lily58.keymap'
 # alias keeb_dl='. ~/personal/lily58-zmk-config/download.sh'
 # alias keeb_in='. ~/personal/lily58-zmk-config/install.sh'
-alias keymap='v ~/personal/corne-zmk-config/config/corne.keymap'
+alias keymap='cd ~/personal/corne-zmk-config; v ~/personal/corne-zmk-config/config/corne.keymap'
 alias keeb_dl='. ~/personal/corne-zmk-config/download.sh'
 alias keeb_in='. ~/personal/corne-zmk-config/install.sh'
 alias keeb_up='keeb_dl && keeb_in'
@@ -60,6 +62,11 @@ alias vl='vpn list'
 
 # yarn
 alias y='yarn'
+alias ydw='yarn dev:web'
+alias ysm='yarn start:mobile'
 
 # call timesheet.sh
 alias timesheet="timesheet.sh"
+
+# autorandr
+alias ara="autorandr"

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # The name of polybar bar which houses the main spotify module and the control modules.
-PARENT_BAR="main"
-# PARENT_BAR_PID=$(pgrep --list-full "polybar" | rg "$PARENT_BAR" | cut --delimiter=" " --field=1)
+# PARENT_BAR="main"
+PARENT_BAR_PID=$(pgrep --list-full "polybar" | rg "$PARENT_BAR" | cut --delimiter=" " --field=1)
 
 # Set the source audio player here.
 # Players supporting the MPRIS spec are supported.
@@ -17,14 +17,14 @@ PLAYER="ncspot"
 FORMAT="{{ title }} - {{ artist }}"
 
 # Sends $2 as message to all polybar PIDs that are part of $1
-# update_hooks() {
-# This is a tricky to undrestand but `man read`. It's getting piped in on the done line
-# Then it is reading it and storing to $id as long as there is value.
-# Then we update polybar with IPC message with $2 (0, 1, 2)
-# while IFS= read -r id; do
-# polybar-msg -p "$id" hook spotify-play-pause $2 1>/dev/null 2>&1
-# done < <(echo "$1")
-# }
+update_hooks() {
+	# This is a tricky to undrestand but `man read`. It's getting piped in on the done line
+	# Then it is reading it and storing to $id as long as there is value.
+	# Then we update polybar with IPC message with $2 (0, 1, 2)
+	while IFS= read -r id; do
+		polybar-msg -p "$id" hook spotify-play-pause $2 1>/dev/null 2>&1
+	done < <(echo "$1")
+}
 
 PLAYERCTL_STATUS=$(playerctl --player=$PLAYER status 2>/dev/null)
 EXIT_CODE=$?
@@ -43,12 +43,12 @@ else
 	if [ "$STATUS" = "Stopped" ]; then
 		echo "No music is playing"
 	elif [ "$STATUS" = "Paused" ]; then
-		# update_hooks "$PARENT_BAR_PID" 2
+		update_hooks "$PARENT_BAR_PID" 2
 		playerctl --player=$PLAYER metadata --format "$FORMAT"
 	elif [ "$STATUS" = "No player is running" ]; then
 		echo "$STATUS"
 	else # Playing
-		# update_hooks "$PARENT_BAR_PID" 1
+		update_hooks "$PARENT_BAR_PID" 1
 		playerctl --player=$PLAYER metadata --format "$FORMAT"
 	fi
 fi

@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# If you're looking for where the VPN is actually started see
+# the mode $mode_vpn in ~.config/i3/config
 
 log_dir="$HOME/timesheets"
 log_file="$log_dir/$(date '+%Y-%m-%d').log"

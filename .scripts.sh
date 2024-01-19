@@ -24,3 +24,21 @@ function nc() {
 		tmux attach -t ncspot
 	fi
 }
+
+function lama() {
+	tmux has-session -t ollama 2>/dev/null
+	if [ $? != 0 ]; then
+		tmux new -s ollama "ollama serve"
+	else
+		tmux attach -t ollama
+	fi
+}
+
+function ene() {
+	tmux has-session -t ene 2>/dev/null
+	if [ $? != 0 ]; then
+		tmux new -s ene "ollama run ene"
+	else
+		tmux attach -t ene
+	fi
+}

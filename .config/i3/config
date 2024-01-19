@@ -86,7 +86,7 @@ exec --no-startup-id sleep 3 && flameshot
 exec_always --no-startup-id compfy 
 
 # Setup cursor repeat in the current envrionment
-exec_always --no-startup-id xset r rate 200 80
+exec_always --no-startup-id xset r rate 250 80
 
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -99,7 +99,7 @@ gaps inner 20
 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+floating_modifier $alt
 
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
@@ -137,7 +137,7 @@ workspace 20 output $rmon
 # reload the configuration file
 bindsym $mod+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $alt+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
@@ -200,11 +200,11 @@ bindsym XF86AudioPlay exec --no-startup-id playerctl --player ncspot play-pause
 
 # Color picker
 bindsym --release $mod+Shift+c exec --no-startup-id xcolor -s
-bindsym $mod+a workspace back_and_forth
-bindsym $mod+Shift+a move container to workspace back_and_forth; workspace back_and_forth
+bindsym $alt+a workspace back_and_forth
+bindsym $alt+Shift+a move container to workspace back_and_forth; workspace back_and_forth
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $alt+Shift+q kill
 bindsym --release $mod+Shift+x exec --no-startup-id xkill
 
 # Dunst controls
@@ -233,7 +233,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in vertical / horizontal orientation
-bindsym $mod+h split toggle
+bindsym $alt+h split toggle
 
 # split in vertical orientation
 # bindsym $mod+v split v
@@ -266,6 +266,9 @@ bindsym $mod+b exec rofi -theme $HOME/.config/rofi/launchers/type-1/style-1.rasi
 
 # Bitwarden rofi
 bindsym $alt+p exec bwmenu --clear 15 --auto-lock 43200
+
+# BG rofi
+bindsym $alt+b exec $HOME/.scripts/rofi-bgpick.sh
 #***** Binds end (should be copied to recording occasionally) *****
 
 
@@ -285,9 +288,9 @@ mode $mode_resize {
   # back to normal: Enter or Escape or $mod+r
   bindsym Return mode "default"
   bindsym Escape mode "default"
-  bindsym $mod+r mode "default"
+  bindsym $alt+r mode "default"
 }
-bindsym $mod+r mode $mode_resize
+bindsym $alt+r mode $mode_resize
 
 mode $mode_vpn {
   bindsym s exec --no-startup-id pritunl-client start xv; exec $HOME/.scripts/vpn_logger.sh start; mode "default"
@@ -357,9 +360,9 @@ mode $mode_rec {
   bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-control down
   bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
   bindsym --release $mod+Shift+c exec --no-startup-id xcolor -s
-  bindsym $mod+a workspace back_and_forth
-  bindsym $mod+Shift+a move container to workspace back_and_forth; workspace back_and_forth
-  bindsym $mod+Shift+q kill
+  bindsym $alt+a workspace back_and_forth
+  bindsym $alt+Shift+a move container to workspace back_and_forth; workspace back_and_forth
+  bindsym $alt+Shift+q kill
   bindsym --release $mod+Shift+x exec --no-startup-id xkill
   bindsym $mod+d exec dunstctl close
   bindsym $mod+Shift+d exec dunstctl close-all
@@ -374,7 +377,7 @@ mode $mode_rec {
   bindsym $mod+Shift+Down move down
   bindsym $mod+Shift+Up move up
   bindsym $mod+Shift+Right move right
-  bindsym $mod+h split toggle
+  bindsym $alt+h split toggle
   bindsym $mod+v exec --no-startup-id copyq show
   bindsym $mod+F11 fullscreen toggle
   bindsym $mod+s layout stacking

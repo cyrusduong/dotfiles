@@ -41,7 +41,7 @@ if [ "$1" = "day" ]; then
 			last_action=$action
 		fi
 
-		echo $last_action $start_time $stop_time
+		# echo $last_action $start_time $stop_time
 	done <"$timesheet_file"
 
 	# If stop_time was not our last line in log and the log is for today
@@ -55,7 +55,8 @@ if [ "$1" = "day" ]; then
 	fi
 
 	duration_hours=$(awk "BEGIN {printf \"%.2f\", $total_duration / 3600}")
-	echo "$given_date: $duration_hours hours ($total_duration seconds)"
+	# echo "$given_date: $duration_hours hours ($total_duration seconds)"
+	echo "$given_date: $duration_hours hours"
 elif [ "$1" = "since" ]; then
 	# Calculate total duration from a specified date up to today
 	specified_date=$2
