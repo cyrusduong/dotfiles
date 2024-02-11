@@ -28,7 +28,7 @@ alias bg='feh --bg-max $(bgpick)'
 
 # open configs
 alias i3config='v ~/.config/i3/config'
-alias vconfig='v ~/.config/nvim'
+alias vconfig='cd ~/.config/nvim && v && cd -'
 alias bconfig='v ~/.config/polybar/config.ini'
 #alias pconfig='v ~/.config/picom/picom.conf'
 alias cconfig='v ~/.config/compfy.conf'
@@ -62,11 +62,21 @@ alias vl='vpn list'
 
 # yarn
 alias y='yarn'
+alias yl='yarn lint'
+alias yl='yarn lint'
+alias yt='yarn test'
+alias ytu='yarn test -u'
+alias ytc='yarn typecheck'
+alias ye='yarn env'
 alias ydw='yarn dev:web'
-alias ysm='yarn start:mobile'
+alias yqg='yarn qg'
+alias ysm='yarn start:mobile --resetCache'
+alias yp='yarn specs'
+alias ypu='yarn specs:ui'
 
 # call timesheet.sh
 alias timesheet="timesheet.sh"
+alias wat="watson"
 
 # autorandr
 alias ara="autorandr"

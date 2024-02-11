@@ -97,6 +97,8 @@ exec --no-startup-id sleep 2 && feh --bg-max $HOME/Pictures/w/kogecha/fxxx.jpg
 # gaps!
 gaps inner 0
 
+# set default border
+default_border normal 2
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $alt
@@ -196,7 +198,7 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-control --volume-max 130 up
 bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-control down
-bindsym XF86AudioPlay exec --no-startup-id playerctl --player ncspot play-pause
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 
 # Color picker
 bindsym --release $mod+Shift+c exec --no-startup-id xcolor -s
@@ -286,15 +288,15 @@ mode $mode_resize {
   bindsym Right resize grow width 10 px or 5 ppt
 
   # back to normal: Enter or Escape or $mod+r
-  bindsym Return mode "default"
   bindsym Escape mode "default"
+  bindsym Return mode "default"
   bindsym $alt+r mode "default"
 }
 bindsym $alt+r mode $mode_resize
 
 mode $mode_vpn {
-  bindsym s exec --no-startup-id pritunl-client start xv; exec $HOME/.scripts/vpn_logger.sh start; mode "default"
-  bindsym o exec --no-startup-id pritunl-client stop xv; exec $HOME/.scripts/vpn_logger.sh stop; mode "default"
+  bindsym s exec --no-startup-id pritunl-client start xv; exec --no-startup-id watson start caesars; mode "default"
+  bindsym o exec --no-startup-id pritunl-client stop xv; exec --no-startup-id watson stop; mode "default"
   # bindsym --release --whole-window button2 exec --no-startup-id killall ffmpeg; mode "default"
   bindsym Escape exec --no-startup-id killall ffmpeg; mode "default"
 }

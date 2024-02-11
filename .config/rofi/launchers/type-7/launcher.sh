@@ -16,4 +16,5 @@ theme='style-1'
 ## Run
 rofi \
 	-show combi \
-	-theme ${dir}/${theme}.rasi
+	-theme ${dir}/${theme}.rasi \
+	-matching fuzzy

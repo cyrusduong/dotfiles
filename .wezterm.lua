@@ -11,6 +11,7 @@ if wezterm.config_builder then
 end
 
 config.color_scheme = "Tokyo Night"
+config.font_size = 11
 config.font = wezterm.font({
 	family = "MonaspiceNe Nerd Font Mono", -- Proportinal
 	-- 0 to disable

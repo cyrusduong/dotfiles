@@ -1,11 +1,12 @@
 # yaml-language-server: $schema=https://json.schemastore.org/lazygit.json
 os:
   editPreset: "nvim"
+gui:
+  commandLogSize: 50
 customCommands:
   - key: "O"
     context: "localBranches"
     command: "gh pr create --web"
-    subprocess: true
   - key: "C"
     context: "localBranches"
     command: "git commit"

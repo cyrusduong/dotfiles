@@ -87,7 +87,7 @@ plugins=(
   gitfast
   history
   isodate
-  # last-working-dir
+  last-working-dir
   mise
   safe-paste
   starship
