@@ -9,6 +9,7 @@ mkdir -p "$dir"
 coords=$(hacksaw --colour "#AA0000" --guide-thickness 2)
 # Delay for compositor animations
 sleep 0.5
+
 file="$dir/$datenow.mp4"
 echo "$coords" | {
 	IFS=+x read -r w h x y
@@ -18,14 +19,16 @@ echo "$coords" | {
 
 	ffmpeg \
 		-loglevel error \
-		-framerate 20 \
+		-framerate 15 \
 		-f x11grab \
 		-s "${w}x${h}" \
 		-i ":0.0+$x,$y" \
-		-preset slow \
+		-preset fast \
 		-c:v h264 \
 		-pix_fmt yuv420p \
 		-crf 15 \
 		-t 120 \
 		"$file"
 }
+
+sleep 2

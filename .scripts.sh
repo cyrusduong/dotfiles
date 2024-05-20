@@ -42,3 +42,7 @@ function ene() {
 		tmux attach -t ene
 	fi
 }
+
+function fixmonitors() {
+	ara 3mon && sleep 2 && ara default && i3-msg restart
+}

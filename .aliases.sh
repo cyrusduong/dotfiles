@@ -67,9 +67,17 @@ alias ytc='yarn typecheck'
 alias ye='yarn env'
 alias ydw='yarn dev:web'
 alias yqg='yarn qg'
+alias ys='yarn start'
 alias ysm='yarn start:mobile --resetCache'
-alias yp='yarn specs'
-alias ypu='yarn specs:ui'
+alias ysp='yarn specs'
+alias yspu='yarn specs:ui'
+alias yca='yarn clean:android'
+alias ycp='yarn codepush:android:development && yarn codepush:android:staging && yarn codepush:ios:development && yarn codepush:ios:staging'
+alias ycpprod='yarn codepush:android:production && yarn codepush:ios:production'
+alias yva='yarn veracode:archive'
+
+# helper to bundle our codes for the veracodes
+alias vvcode='wd admw && cd .. && rm *.tgz; wd ad && yva && wd l && yva && wd fp && yva'
 
 # call timesheet.sh
 alias timesheet="timesheet.sh"

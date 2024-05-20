@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
+sleep 0.25
+
 killall ffmpeg
 
 # Give time for file to write?
-sleep 0.25
+sleep 2
 
 latest_file=$(ls -lr ~/recordings/ | rg cduong | head --lines 1 | awk '{print $9}')
 

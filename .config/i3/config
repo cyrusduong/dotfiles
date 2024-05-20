@@ -46,8 +46,8 @@ set $rmon "DP-1"
 # modes
 set $mode_screengrab "screenshot: [f]lameshot [s]creengrab"
 set $mode_rec "recording stop:[mod+esc]"
-set $mode_vpn "vpn: [s]tart st[o]p [esc]ape" 
-set $mode_resize "resize" 
+set $mode_vpn "vpn: [s]tart st[o]p [esc]ape"
+set $mode_resize "resize"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -74,7 +74,7 @@ exec --no-startup-id dex --autostart --environment i3
 # exec --no-startup-id nm-applet
 
 # Setup initial monitor layout using autorandr
-exec --no-startup-id autorandr default
+exec --no-startup-id autorandr default-120
 
 # Start CopyQ clipboard manager
 exec --no-startup-id sleep 3.5 && copyq
@@ -137,7 +137,7 @@ workspace 19 output $rmon
 workspace 20 output $rmon
 
 # reload the configuration file
-bindsym $mod+c reload
+bindsym $mod+c reload; exec --no-startup-id xset r rate 250 80;
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $alt+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -192,8 +192,8 @@ bindsym $mod+Shift+F9  move container to workspace number $ws19; workspace numbe
 bindsym $mod+Shift+F10 move container to workspace number $ws20; workspace number $ws20
 
 # Audio related binds
-bindsym $mod+k exec --no-startup-id pulseaudio-control next-node
-bindsym $mod+Shift+w exec --no-startup-id /usr/bin/wakeonlan -f $HOME/.wakeonlan/lg
+bindsym XF86AudioMute exec --no-startup-id pulseaudio-control next-node
+bindsym $alt+Shift+w exec --no-startup-id /usr/bin/wakeonlan -f $HOME/.wakeonlan/lg
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-control --volume-max 130 up
@@ -258,7 +258,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+x focus parent
+bindsym $mod+a focus parent
 
 # focus the child container
 # bindsym $mod+a focus child
@@ -271,6 +271,10 @@ bindsym $alt+p exec bwmenu --clear 15 --auto-lock 43200
 
 # BG rofi
 bindsym $alt+b exec $HOME/.scripts/rofi-bgpick.sh
+bindsym $alt+Shift+b exec $HOME/.scripts/rofi-bgpick-manual.sh
+
+# Fixmonitors
+bindsym $alt+f exec $HOME/.scripts/fixmon.sh
 #***** Binds end (should be copied to recording occasionally) *****
 
 
@@ -334,28 +338,28 @@ mode $mode_rec {
   bindsym $mod+F8  workspace number $ws18
   bindsym $mod+F9  workspace number $ws19
   bindsym $mod+F10 workspace number $ws20
-  bindsym $mod+Shift+1   move container to workspace number $ws1;  workspace number $ws1  
-  bindsym $mod+Shift+2   move container to workspace number $ws2;  workspace number $ws2  
-  bindsym $mod+Shift+3   move container to workspace number $ws3;  workspace number $ws3  
-  bindsym $mod+Shift+4   move container to workspace number $ws4;  workspace number $ws4  
-  bindsym $mod+Shift+5   move container to workspace number $ws5;  workspace number $ws5  
-  bindsym $mod+Shift+6   move container to workspace number $ws6;  workspace number $ws6  
-  bindsym $mod+Shift+7   move container to workspace number $ws7;  workspace number $ws7  
-  bindsym $mod+Shift+8   move container to workspace number $ws8;  workspace number $ws8  
-  bindsym $mod+Shift+9   move container to workspace number $ws9;  workspace number $ws9  
-  bindsym $mod+Shift+0   move container to workspace number $ws10; workspace number $ws10 
-  bindsym $mod+Shift+F1  move container to workspace number $ws11; workspace number $ws11 
-  bindsym $mod+Shift+F2  move container to workspace number $ws12; workspace number $ws12 
-  bindsym $mod+Shift+F3  move container to workspace number $ws13; workspace number $ws13 
-  bindsym $mod+Shift+F4  move container to workspace number $ws14; workspace number $ws14 
-  bindsym $mod+Shift+F5  move container to workspace number $ws15; workspace number $ws15 
-  bindsym $mod+Shift+F6  move container to workspace number $ws16; workspace number $ws16 
-  bindsym $mod+Shift+F7  move container to workspace number $ws17; workspace number $ws17 
-  bindsym $mod+Shift+F8  move container to workspace number $ws18; workspace number $ws18 
-  bindsym $mod+Shift+F9  move container to workspace number $ws19; workspace number $ws19 
-  bindsym $mod+Shift+F10 move container to workspace number $ws20; workspace number $ws20 
-  bindsym $mod+k exec --no-startup-id pulseaudio-control next-node
-  bindsym $mod+Shift+w exec --no-startup-id /usr/bin/wakeonlan -f $HOME/.wakeonlan/lg
+  bindsym $mod+Shift+1   move container to workspace number $ws1;  workspace number $ws1
+  bindsym $mod+Shift+2   move container to workspace number $ws2;  workspace number $ws2
+  bindsym $mod+Shift+3   move container to workspace number $ws3;  workspace number $ws3
+  bindsym $mod+Shift+4   move container to workspace number $ws4;  workspace number $ws4
+  bindsym $mod+Shift+5   move container to workspace number $ws5;  workspace number $ws5
+  bindsym $mod+Shift+6   move container to workspace number $ws6;  workspace number $ws6
+  bindsym $mod+Shift+7   move container to workspace number $ws7;  workspace number $ws7
+  bindsym $mod+Shift+8   move container to workspace number $ws8;  workspace number $ws8
+  bindsym $mod+Shift+9   move container to workspace number $ws9;  workspace number $ws9
+  bindsym $mod+Shift+0   move container to workspace number $ws10; workspace number $ws10
+  bindsym $mod+Shift+F1  move container to workspace number $ws11; workspace number $ws11
+  bindsym $mod+Shift+F2  move container to workspace number $ws12; workspace number $ws12
+  bindsym $mod+Shift+F3  move container to workspace number $ws13; workspace number $ws13
+  bindsym $mod+Shift+F4  move container to workspace number $ws14; workspace number $ws14
+  bindsym $mod+Shift+F5  move container to workspace number $ws15; workspace number $ws15
+  bindsym $mod+Shift+F6  move container to workspace number $ws16; workspace number $ws16
+  bindsym $mod+Shift+F7  move container to workspace number $ws17; workspace number $ws17
+  bindsym $mod+Shift+F8  move container to workspace number $ws18; workspace number $ws18
+  bindsym $mod+Shift+F9  move container to workspace number $ws19; workspace number $ws19
+  bindsym $mod+Shift+F10 move container to workspace number $ws20; workspace number $ws20
+  bindsym XF86AudioMute exec --no-startup-id pulseaudio-control next-node
+  bindsym $alt+Shift+w exec --no-startup-id /usr/bin/wakeonlan -f $HOME/.wakeonlan/lg
   bindsym XF86AudioNext exec --no-startup-id playerctl next
   bindsym XF86AudioPrev exec --no-startup-id playerctl previous
   bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-control --volume-max 130 up
@@ -398,3 +402,11 @@ bindsym --release Shift+Print exec --no-startup-id $HOME/.scripts/record.sh; mod
 # bar {
 #         status_command i3status
 # }
+
+# Zoom floating & tiling
+# https://www.reddit.com/r/i3wm/comments/m27dwc/comment/ktncv6c
+for_window [class="(.*join\?action\=join.*|.*zoom.*)"] floating enable
+for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom - Licensed Account"] floating disable
+for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom - Free Account"] floating disable
+for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom Meeting"] floating disable
+for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom Webinar"] floating disable

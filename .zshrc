@@ -99,6 +99,9 @@ plugins=(
   wd
   web-search
   zbell
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  zsh-autocomplete
 )
 
 # reverse the CTRL-R fzf search prompt (to match other hotkeys)
@@ -158,3 +161,24 @@ bindkey -v
 # autoload -Uz compinit
 # compinit
 # End of lines added by compinstall
+
+# zstyle '*:compinit' arguments -D -i -u -C -w
+zstyle ':autocomplete:*' delay 0.1  # seconds (float)
+
+# reset up and down key
+# https://github.com/marlonrichert/zsh-autocomplete?tab=readme-ov-file#reset-history-key-bindings-to-zsh-default
+() {
+   local -a prefix=( '\e'{\[,O} )
+   local -a up=( ${^prefix}A ) down=( ${^prefix}B )
+   local key=
+   for key in $up[@]; do
+      bindkey "$key" up-line-or-history
+   done
+   for key in $down[@]; do
+      # bindkey "$key" down-line-or-history
+      bindkey "$key" down-line-or-beginning-search
+   done
+}
+
+# https://github.com/ajeetdsouza/zoxide
+eval "$(zoxide init zsh)"
