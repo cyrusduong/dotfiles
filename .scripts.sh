@@ -44,5 +44,5 @@ function ene() {
 }
 
 function fixmonitors() {
-	ara 3mon && sleep 2 && ara default && i3-msg restart
+	ara 3mon && sleep 2 && ara default-120 && i3-msg restart
 }

@@ -30,8 +30,8 @@ alias bg='feh --bg-max $(bgpick)'
 alias i3config='v ~/.config/i3/config'
 alias vconfig='cd ~/.config/nvim && v && cd -'
 alias bconfig='v ~/.config/polybar/config.ini'
-#alias pconfig='v ~/.config/picom/picom.conf'
-alias cconfig='v ~/.config/compfy.conf'
+alias pconfig='v ~/.config/picom/picom.conf'
+# alias cconfig='v ~/.config/compfy.conf'
 alias dconfig='v ~/.config/dunst/dunstrc'
 alias lgconfig='v ~/.config/lazygit/config.yml'
 alias wconfig='v ~/.wezterm.lua'
@@ -40,8 +40,8 @@ alias zconfig='v ~/.zshrc'
 # for keyboard
 # alias keymap='cd ~/personal/lily58-zmk-config/config/lily58.keymap; v ~/personal/lily58-zmk-config/config/lily58.keymap'
 # alias keymap='cd ~/personal/lily58-zmk-config/config/lily58.keymap; v ~/personal/lily58-zmk-config/config/lily58.keymap'
-# alias keeb_dl='. ~/personal/lily58-zmk-config/download.sh'
-# alias keeb_in='. ~/personal/lily58-zmk-config/install.sh'
+alias keeb_dl='. ~/personal/solfe-zmk-config/download.sh'
+alias keeb_in='. ~/personal/solfe-zmk-config/install.sh'
 alias keymap='cd ~/personal/solfe-zmk-config; v ~/personal/solfe-zmk-config/config/sofle.keymap'
 
 # runtimes (used to use asdf, but mise is better)
@@ -75,6 +75,9 @@ alias yca='yarn clean:android'
 alias ycp='yarn codepush:android:development && yarn codepush:android:staging && yarn codepush:ios:development && yarn codepush:ios:staging'
 alias ycpprod='yarn codepush:android:production && yarn codepush:ios:production'
 alias yva='yarn veracode:archive'
+
+# pnpm
+alias pn='pnpm'
 
 # helper to bundle our codes for the veracodes
 alias vvcode='wd admw && cd .. && rm *.tgz; wd ad && yva && wd l && yva && wd fp && yva'

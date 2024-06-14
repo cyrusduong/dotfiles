@@ -19,8 +19,8 @@ x-prop-scaling_mode None
 x-prop-underscan off
 x-prop-underscan_hborder 0
 x-prop-underscan_vborder 0
-output DP-2
-crtc 1
+output DP-3
+crtc 2
 mode 2520x1680
 pos 0x2160
 rate 60.00
@@ -31,8 +31,8 @@ x-prop-scaling_mode None
 x-prop-underscan off
 x-prop-underscan_hborder 0
 x-prop-underscan_vborder 0
-output DP-3
-crtc 2
+output DP-1
+crtc 3
 mode 2520x1680
 pos 2520x2160
 rate 60.00
@@ -43,8 +43,8 @@ x-prop-scaling_mode None
 x-prop-underscan off
 x-prop-underscan_hborder 0
 x-prop-underscan_vborder 0
-output DP-1
-crtc 3
+output DP-2
+crtc 1
 mode 2520x1680
 pos 5040x2160
 rate 60.00

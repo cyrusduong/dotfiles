@@ -39,9 +39,9 @@ set $ws20 "20"
 
 # Get monitors via xrandr --listmonitors
 set $lg "HDMI-1"
-set $lmon "DP-2"
-set $mmon "DP-3"
-set $rmon "DP-1"
+set $rmon "DP-2"
+set $lmon "DP-3"
+set $mmon "DP-1"
 
 # modes
 set $mode_screengrab "screenshot: [f]lameshot [s]creengrab"
@@ -299,8 +299,8 @@ mode $mode_resize {
 bindsym $alt+r mode $mode_resize
 
 mode $mode_vpn {
-  bindsym s exec --no-startup-id pritunl-client start xv; exec --no-startup-id watson start caesars; mode "default"
-  bindsym o exec --no-startup-id pritunl-client stop xv; exec --no-startup-id watson stop; mode "default"
+  bindsym s exec --no-startup-id pritunl-client start au; exec --no-startup-id watson start caesars; mode "default"
+  bindsym o exec --no-startup-id pritunl-client stop au; exec --no-startup-id watson stop; mode "default"
   # bindsym --release --whole-window button2 exec --no-startup-id killall ffmpeg; mode "default"
   bindsym Escape exec --no-startup-id killall ffmpeg; mode "default"
 }
@@ -397,7 +397,7 @@ mode $mode_rec {
 bindsym --release Shift+Print exec --no-startup-id $HOME/.scripts/record.sh; mode $mode_rec
 
 # Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available
+# finds out, if availabl.*Volume Control.*e
 # Idk why but this section has to be uncommented for to not have extra 1px padding around polybar.
 # bar {
 #         status_command i3status
@@ -410,3 +410,6 @@ for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom - Licensed Acc
 for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom - Free Account"] floating disable
 for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom Meeting"] floating disable
 for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom Webinar"] floating disable
+
+# Volume floating & tiling
+for_window [title="Volume Control"] floating enable
